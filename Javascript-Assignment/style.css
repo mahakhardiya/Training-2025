@@ -1,0 +1,89 @@
+/* Apply a pastel background */
+body {
+    background-color: #F8E8EE;  /* Soft pink pastel */
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    color: #4A4A4A; /* Dark grey for contrast */
+}
+
+/* Style the main heading */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #8E7AB5; /* Pastel purple */
+}
+
+/* Style the score section */
+.score-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Buttons with pastel colors */
+button {
+    background-color: #A7D397;  /* Pastel green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #82B380; /* Darker pastel green on hover */
+}
+
+/* Input field */
+input {
+    padding: 10px;
+    width: 250px;
+    border: 2px solid #D8BFD8; /* Pastel purple border */
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+}
+
+/* Tic Tac Toe Board */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin: 20px auto;
+    justify-content: center;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #FFF1F3; /* Soft pastel pink */
+    border: 3px solid #B0A8B9; /* Soft grey-purple border */
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.cell:hover {
+    background-color: #E8D1C5; /* Light peach hover */
+}
+
+/* New game button */
+.new-game {
+    background-color: #E6A4B4; /* Soft pastel pink */
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.new-game:hover {
+    background-color: #C27BA0; /* Slightly darker pastel pink */
+}
