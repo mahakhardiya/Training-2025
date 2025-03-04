@@ -1,9 +1,18 @@
+#main {
+    background-color: #D1B3C4; 
+    padding: 30px;
+    width: 50%;
+    margin: 20px auto; 
+    border-radius: 20px; 
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
 
 body {
-    background-color: #F8E8EE;  
+    background-color: #F8E8EE; 
     font-family: "Poppins", sans-serif;
+    color: #4A4A4A;
     text-align: center;
-    color: #4A4A4A; 
 }
 
 

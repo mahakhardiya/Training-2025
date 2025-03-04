@@ -30,13 +30,13 @@ const player2Heading = document.getElementById("player2Heading");
 
 player1Input.addEventListener("input", function () {
     player1Name = this.value || "Player 1";
-    player1Heading.textContent = `Player 1: ${player1Name}`;  // Update heading
+    player1Heading.textContent = `Player 1: ${player1Name} ✨`;  // Update heading
     update();
 });
 
 player2Input.addEventListener("input", function () {
     player2Name = this.value || "Player 2";
-    player2Heading.textContent = `Player 2: ${player2Name}`;  // Update heading
+    player2Heading.textContent = `Player 2: ${player2Name} ✨`;  // Update heading
     update();
 });
 
