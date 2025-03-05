@@ -14,6 +14,7 @@ let player2Name = "Player 2";
 
 const winningCondition = 100;
 
+const dis = document.getElementById("dis");
 const diceDisplay = document.getElementById("diceDisplay");
 const currentScoreDisplay = document.getElementById("currentScoreDisplay");
 const savedScore1 = document.getElementById("savedScore1");
@@ -58,7 +59,7 @@ saveButton.addEventListener("click", ()=>{
     currScore[activePlayer] = 0;
 
     if( savedScore[activePlayer] >= winningCondition){
-        messageDisplay.textContent = `${activePlayer} Wins! 🎉`;
+        dis.textContent = `${activePlayer} Wins! 🎉`;
         disableGame();
         return;
     }
