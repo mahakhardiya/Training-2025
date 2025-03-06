@@ -48,7 +48,8 @@ saveButton.addEventListener("click", () => {
     currScore[activePlayer] = 0;
 
     if (savedScore[activePlayer] >= winningCondition) {
-        turnIndicator.textContent = `${activePlayer} Wins! 🎉`;
+        let winnerName = activePlayer === "Player 1" ? player1Name : player2Name;
+        dis.textContent = `${winnerName} Wins! 🎉`; 
         disableGame();
         return;
     }
