@@ -11,26 +11,33 @@
 <body>
     <div id="main">
         <h1 id="dis">Roll the Dice🎲</h1>
-        <div id="playerContainer">
-            <div class="player">
-                <h2 id="player1Heading">PLAYER 1👤</h2>
-                <input type="text" id="player1Name" placeholder="Enter Player 1 Name">
-                <h3>Saved Score: <span id="savedScore1">0</span></h3>
-            </div><br>
-            <div class="player">
-                <h2 id="player2Heading">PLAYER 2👤</h2>
-                <input type="text" id="player2Name" placeholder="Enter Player 2 Name">
-                <h3>Saved Score: <span id="savedScore2">0</span></h3>
-            </div><br>
+        <div class="game-container">
+            <h2 id="turnIndicator">🎯 Player 1's Turn!</h2>
+        
+            <div class="player-box">
+                <h3>👤 PLAYER 1</h3>
+                <input type="text" placeholder="Enter Player 1 Name">
+                <p>Saved Score: 0</p>
+            </div>
+        
+            <div class="player-box">
+                <h3>👤 PLAYER 2</h3>
+                <input type="text" placeholder="Enter Player 2 Name">
+                <p>Saved Score: 0</p>
+            </div>
+        
+            <div class="dice-display">
+                <p><b>🎲 Dice: -)</b></p>
+                <p><b>Current Score: 0</b></p>
+            </div>
+        
+            <div class="button-container">
+                <button class="rollDice">🎲 Roll Dice</button>
+                <button class="saveButton">💾 Save Score</button>
+                <button class="resetButton">🔄 Reset</button>
+            </div>
         </div>
-        <div id="gameControls">
-            <h2 id="diceDisplay"><b>Dice:🎲 </b></h2>
-            <h2 id="currentScoreDisplay">Current Score: 0</h2>
-            <button id="rollDice">Roll Dice</button>
-            <button id="saveButton">Save Score</button>
-            <button id="resetButton">Reset</button>
-            <h1 id="messageDisplay"></h1>
-        </div>
+        
     </div>
 
     <script src="app.js"></script>
