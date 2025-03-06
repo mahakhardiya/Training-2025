@@ -24,6 +24,18 @@ player1Input.addEventListener("input", function () {
     update();
 });
 
+document.querySelectorAll(".player-box input").forEach((input, index) => {
+    input.addEventListener("input", () => {
+        let playerNumber = index + 1;
+        let playerName = input.value.trim(); 
+        
+        if (playerName) {
+            document.querySelectorAll(".player-box h3")[index].textContent = `👤 Player ${playerNumber}: ${playerName}`;
+        }
+    });
+});
+
+
 player2Input.addEventListener("input", function () {
     player2Name = this.value || "Player 2";
     player2Heading.textContent = `👤Player 2: ${player2Name}`;
@@ -73,7 +85,8 @@ resetButton.addEventListener("click", () => {
 
 function switchTurn() {
     activePlayer = activePlayer === "Player 1" ? "Player 2" : "Player 1";
-    turnIndicator.textContent = `🎯 ${activePlayer}'s Turn!`;
+    let winnerName = activePlayer === "Player 1" ? player1Name : player2Name;
+    turnIndicator.textContent = `🎯 ${winnerName}'s Turn!`;
 }
 
 function update() {
