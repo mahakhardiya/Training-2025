@@ -17,29 +17,23 @@ const saveButton = document.querySelector(".saveButton");
 const resetButton = document.querySelector(".resetButton");
 const player1Heading = document.getElementById("player1Heading");
 const player2Heading = document.getElementById("player2Heading");
+const dis = document.getElementById("dis");
 
-player1Input.addEventListener("input", function () {
-    player1Name = this.value || "Player 1";
-    player1Heading.textContent = `👤Player 1: ${player1Name}`;
-    update();
-});
 
 document.querySelectorAll(".player-box input").forEach((input, index) => {
     input.addEventListener("input", () => {
         let playerNumber = index + 1;
         let playerName = input.value.trim(); 
-        
+        let playerHeading = document.querySelectorAll(".player-box h3")[index];
+
         if (playerName) {
-            document.querySelectorAll(".player-box h3")[index].textContent = `👤 Player ${playerNumber}: ${playerName}`;
+            playerHeading.textContent = `👤 Player ${playerNumber}: ${playerName}`;
+            if (playerNumber === 1) player1Name = playerName;
+            if (playerNumber === 2) player2Name = playerName;
+        } else {
+            playerHeading.textContent = `👤 Waiting for Player ${playerNumber}...`;
         }
     });
-});
-
-
-player2Input.addEventListener("input", function () {
-    player2Name = this.value || "Player 2";
-    player2Heading.textContent = `👤Player 2: ${player2Name}`;
-    update();
 });
 
 rollButton.addEventListener("click", () => {
@@ -70,23 +64,18 @@ saveButton.addEventListener("click", () => {
 });
 
 resetButton.addEventListener("click", () => {
-    player1Input.value = "";
-    player2Input.value = "";
-    player1Heading.textContent = `👤Player 1`;
-    player2Heading.textContent = `👤Player 2`;
     currScore = { "Player 1": 0, "Player 2": 0 };
     savedScore = { "Player 1": 0, "Player 2": 0 };
     activePlayer = "Player 1";
-    turnIndicator.textContent = "🎯 Player 1's Turn!";
+    turnIndicator.textContent = `🎯 ${player1Name || "Player 1"}'s Turn!`;
     enableGame();
     update();
-    location.reload(); 
 });
 
 function switchTurn() {
     activePlayer = activePlayer === "Player 1" ? "Player 2" : "Player 1";
-    let winnerName = activePlayer === "Player 1" ? player1Name : player2Name;
-    turnIndicator.textContent = `🎯 ${winnerName}'s Turn!`;
+    let activePlayerName = activePlayer === "Player 1" ? (player1Name || "Player 1") : (player2Name || "Player 2");
+    turnIndicator.textContent = `🎯 ${activePlayerName}'s Turn!`;
 }
 
 function update() {
@@ -104,3 +93,4 @@ function enableGame() {
     rollButton.disabled = false;
     saveButton.disabled = false;
 }
+
