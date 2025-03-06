@@ -8,6 +8,10 @@
     align-items: center;
 }
 
+body{
+    background-color: #F8E8EE; 
+}
+
 .game-container {
     max-width: 500px;
     margin: auto;
