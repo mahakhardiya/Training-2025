@@ -1,0 +1,132 @@
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(to right, #f0f4f8, #dbe9f3);
+    color: #2c3e50;
+    text-align: center;
+    padding: 20px;
+}
+
+#game-screen, #starting-screen, #end-screen {
+    background: rgba(245, 248, 250, 0.95);
+    padding: 25px;
+    border-radius: 15px;
+    width: 50%;
+    margin: auto;
+    box-shadow: 0px 0px 12px rgba(0, 51, 102, 0.2);
+    transition: 0.5s ease-in-out;
+    border: 1px solid #aacbe8;
+}
+
+#question {
+    font-size: 22px;
+    font-weight: bold;
+    background: #d1e7f5;
+    color: #2a3f5c;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px rgba(0, 51, 102, 0.2);
+}
+
+#time-left {
+    font-size: 20px;
+    background: rgba(190, 220, 245, 0.4);
+    padding: 5px 15px;
+    border-radius: 10px;
+    display: inline-block;
+    transition: 0.3s;
+    color: #2a3f5c;
+}
+
+.option-label {
+    display: block;
+    padding: 12px;
+    margin: 5px 0;
+    border-radius: 8px;
+    background: rgba(230, 240, 250, 0.7);
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    color: #2c3e50;
+    border: 1px solid #99c2e4;
+}
+
+.option-label:hover {
+    background: #99c2e4;
+    color: #2c3e50;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px rgba(170, 205, 230, 0.6);
+}
+
+.option-label input:checked + label {
+    background: #6fa8dc;
+    color: white;
+    box-shadow: 0px 0px 8px rgba(111, 168, 220, 0.7);
+}
+
+button {
+    background: #457b9d;
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 8px rgba(69, 123, 157, 0.6);
+}
+
+button:hover {
+    background: #99c2e4;
+    color: #2c3e50;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px rgba(170, 205, 230, 0.6);
+}
+
+#final-score {
+    font-size: 26px;
+    font-weight: bold;
+    color: #457b9d;
+    text-shadow: 0px 0px 8px rgba(69, 123, 157, 0.6);
+}
+
+@media (max-width: 768px) {
+    #game-screen, #starting-screen, #end-screen {
+        width: 90%;
+    }
+
+    #question {
+        font-size: 18px;
+    }
+}
+
+@keyframes soft-glow {
+    0%, 100% {
+        text-shadow: 0px 0px 4px rgba(69, 123, 157, 0.3);
+    }
+    50% {
+        text-shadow: 0px 0px 6px rgba(69, 123, 157, 0.5);
+    }
+}
+
+h1, h2, h3 {
+    animation: soft-glow 1.5s infinite alternate;
+}
+
+.correct-answer {
+    background: #5a99c6 !important;
+    color: white;
+    animation: bounce 0.5s ease-in-out;
+    box-shadow: 0px 0px 8px rgba(90, 153, 198, 0.6);
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
