@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitButton = document.getElementById("submit-answer");
     const finalScoreElement = document.getElementById("final-score");
     const restartButton = document.getElementById("restart-game");
+    const endGameButton = document.getElementById("end-game");
 
     let questions = [];
     let currentQuestionIndex = 0;
@@ -112,11 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const input = label.querySelector("input");
 
             if (input.value === correctAnswer) {
-                label.classList.add("correct-answer"); 
+                label.classList.add("correct-answer");
                 label.innerHTML += " ✅";
-            } 
+            }
             if (selectedOption && input.value === selectedOption.value && selectedOption.value !== correctAnswer) {
-                label.style.color = "red"; 
+                label.style.color = "red";
                 label.innerHTML += " ❌";
             }
         });
@@ -193,5 +194,24 @@ document.addEventListener("DOMContentLoaded", () => {
         let textArea = document.createElement("textarea");
         textArea.innerHTML = text;
         return textArea.value;
+    }
+
+    endGameButton.addEventListener("click", () => {
+        clearInterval(timer); 
+        showEndScreen();
+    });
+
+    function showEndScreen() {
+        gameScreen.style.display = "none";
+        endScreen.style.display = "block";
+
+        let message = "🎉 Great Job!";
+        if (score < 5) {
+            message = "😢 Better Luck Next Time!";
+        } else if (score < 10) {
+            message = "😊 Keep Improving!";
+        }
+
+        finalScoreElement.innerHTML = `${message} <br> 🏆 <strong>Score:</strong> <span style="color: green;">${score}</span> out of <strong>${currentQuestionIndex + 1}</strong>`;
     }
 });
