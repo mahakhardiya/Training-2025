@@ -1,4 +1,3 @@
-/* General Styling */
 body {
     font-family: "Poppins", sans-serif;
     background: linear-gradient(to right, #4facfe, #00f2fe);
@@ -7,7 +6,6 @@ body {
     padding: 20px;
 }
 
-/* Quiz Container */
 #game-screen, #starting-screen, #end-screen {
     background: rgba(0, 0, 0, 0.8);
     padding: 20px;
@@ -18,7 +16,6 @@ body {
     transition: 0.5s ease-in-out;
 }
 
-/* Question Styling */
 #question {
     font-size: 20px;
     font-weight: bold;
@@ -29,7 +26,6 @@ body {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Timer Styling */
 #time-left {
     font-size: 18px;
     background: rgba(255, 255, 255, 0.2);
@@ -39,7 +35,6 @@ body {
     transition: 0.3s;
 }
 
-/* Options Styling */
 .option-label {
     display: block;
     padding: 10px;
@@ -56,13 +51,11 @@ body {
     transform: scale(1.05);
 }
 
-/* Selected Answer */
 .option-label input:checked + label {
     background: #4caf50;
     color: white;
 }
 
-/* Buttons */
 button {
     background: #00c853;
     color: white;
@@ -80,14 +73,12 @@ button:hover {
     transform: scale(1.1);
 }
 
-/* Score Styling */
 #final-score {
     font-size: 24px;
     font-weight: bold;
     color: #00ff00;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     #game-screen, #starting-screen, #end-screen {
         width: 90%;
