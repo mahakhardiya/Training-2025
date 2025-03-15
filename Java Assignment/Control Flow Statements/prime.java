@@ -12,11 +12,11 @@ public class prime {
             boolean isPrime = true;
 
             if (num <= 1) {
-                isPrime = false; // Numbers <= 1 are not prime
+                isPrime = false;
             } else {
-                for (int i = 2; i <= Math.sqrt(num); i++) { // Optimized check up to √num
+                for (int i = 2; i <= Math.sqrt(num); i++) {
                     if (num % i == 0) {
-                        isPrime = false; // If divisible, not prime
+                        isPrime = false;
                         break;
                     }
                 }

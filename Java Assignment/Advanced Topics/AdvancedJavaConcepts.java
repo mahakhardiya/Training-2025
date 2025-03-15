@@ -8,7 +8,7 @@ abstract class Bird {
     abstract void fly();
 
     void eat() {
-        System.out.println("Bird is eating...");
+        System.out.println("Bird is eating");
     }
 }
 
@@ -20,7 +20,7 @@ class Dog implements Animal {
 
 class Sparrow extends Bird {
     void fly() {
-        System.out.println("Sparrow is flying...");
+        System.out.println("Sparrow is flying");
     }
 }
 
@@ -75,7 +75,7 @@ public class AdvancedJavaConcepts {
         ExceptionHandling.divideNumbers(10, 0);
 
         // FILE I/O OPERATIONS
-        FileOperations.readFile("sample.txt"); // Ensure a file named 'sample.txt' exists
+        FileOperations.readFile("sample.txt");
 
         // MULTITHREADING
         Task1 t1 = new Task1();

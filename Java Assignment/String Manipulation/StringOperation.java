@@ -3,12 +3,10 @@ import java.util.Scanner;
 
 public class StringOperation {
 
-    // Function to reverse a string
     public static String reverseString(String str) {
         return new StringBuilder(str).reverse().toString();
     }
 
-    // Function to count vowels in a string
     public static int countVowels(String str) {
         int count = 0;
         String vowels = "AEIOUaeiou";
@@ -20,7 +18,6 @@ public class StringOperation {
         return count;
     }
 
-    // Function to check if two strings are anagrams
     public static boolean areAnagrams(String str1, String str2) {
         char[] arr1 = str1.replaceAll("\\s", "").toLowerCase().toCharArray();
         char[] arr2 = str2.replaceAll("\\s", "").toLowerCase().toCharArray();

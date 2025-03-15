@@ -66,13 +66,13 @@ class EncapsulationDemo {
 public class OOP {
     public static void main(String[] args) {
         // Creating Student object
-        Student student = new Student("Alice", 101, 85.5);
+        Student student = new Student("Mahak", 101, 85.5);
         System.out.println("Student Details:");
         student.displayDetails();
 
         System.out.println("\nGraduate Student Details:");
         // Creating GraduateStudent object
-        GraduateStudent gradStudent = new GraduateStudent("Bob", 102, 92, "AI Research");
+        GraduateStudent gradStudent = new GraduateStudent("Kritika", 102, 92, "AI Research");
         gradStudent.displayDetails();
 
         // Polymorphism
