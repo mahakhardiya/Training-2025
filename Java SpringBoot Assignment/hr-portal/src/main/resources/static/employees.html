@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2 class="title">Employee List</h2>
+
+    <!-- Employee Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Email</th>
+                <th>Salary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="employeeBody">
+            <!-- Employee data will be dynamically inserted here -->
+        </tbody>
+    </table>
+
+    <!-- Buttons for adding employees -->
+    <div class="button-container">
+        <button id="showAddFormBtn" class="btn">Add Employee</button>
+    </div>
+
+    <!-- Forms Container -->
+    <div class="form-container">
+        <!-- Add Employee Form -->
+        <form id="addEmployeeForm" class="hidden">
+            <h3>Add Employee</h3>
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="department" placeholder="Department" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="number" id="salary" placeholder="Salary" required>
+            <button type="submit" class="btn">Add Employee</button>
+            <button type="button" class="btn close-btn" onclick="closeForm('addEmployeeForm')">Close</button>
+        </form>
+        </form>
+
+        <!-- Edit Employee Form -->
+        <form id="editEmployeeForm" class="hidden">
+            <h3>Edit Employee</h3>
+            <input type="hidden" id="editId">
+            <input type="text" id="editName" placeholder="Name" required>
+            <input type="text" id="editDepartment" placeholder="Department" required>
+            <input type="email" id="editEmail" placeholder="Email" required>
+            <input type="number" id="editSalary" placeholder="Salary" required>
+            <button type="submit" class="btn">Update Employee</button>
+            <button type="button" class="btn close-btn" onclick="closeForm('editEmployeeForm')">Close</button>
+        </form>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

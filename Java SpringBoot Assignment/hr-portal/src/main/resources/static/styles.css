@@ -1,0 +1,67 @@
+/* Set the background color */
+body {
+    background-color: #0D1117;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Center the login title */
+h1 {
+    margin-top: 50px;
+}
+
+/* Style the form */
+#loginForm {
+    background-color: #0D1117;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 255, 170, 0.5); /* Greenish glow effect */
+    width: 300px;
+    margin: auto;
+    margin-top: 80px;
+    text-align: left;
+}
+
+/* Style labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+/* Style input fields */
+input {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #00FFAA; /* Green border */
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+}
+
+/* Style the button */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #00FFAA; /* Green button */
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #00CC88; /* Darker green on hover */
+}
+
+/* Error message style */
+#error {
+    margin-top: 10px;
+    color: red;
+}

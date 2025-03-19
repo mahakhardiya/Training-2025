@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Portal - Login</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        async function login(event) {
+            event.preventDefault(); // ✅ Prevents page refresh
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                const response = await fetch("http://localhost:8080/hr/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+                });
+
+                const isAuthenticated = await response.json();
+
+                if (isAuthenticated) {
+                    localStorage.setItem("hrLoggedIn", "true"); // ✅ Store login state
+                    window.location.href = "employees.html"; // ✅ Redirect to Employees page
+                } else {
+                    document.getElementById("error").textContent = "Invalid email or password!";
+                }
+            } catch (error) {
+                console.error("Error logging in:", error);
+                document.getElementById("error").textContent = "Login failed. Try again.";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1>HR Portal Login</h1>
+
+    <form id="loginForm">
+        <label for="email"><b>Email:</b></label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label for="password"><b>Password:</b></label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p id="error"></p>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", login);
+    </script>
+
+</body>
+</html>
