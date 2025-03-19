@@ -127,4 +127,26 @@ input {
     background-color: #b52b37;
 }
 
+@media (max-width: 768px) {
+    table {
+        font-size: 14px;
+    }
 
+    th, td {
+        padding: 8px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    input {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
