@@ -86,6 +86,39 @@ form h3 {
     color: #0caf5f;
 }
 
+/* Header Style */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+/* Logout Button */
+.logout-btn {
+    background-color: #dc3545;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+/* Close Button */
+.close-btn {
+    background-color: #6c757d;
+}
+
+.close-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Centering the Employee List Title */
+.title {
+    text-align: center;
+    width: 100%;
+}
+
+
 input {
     display: block;
     width: 95%;

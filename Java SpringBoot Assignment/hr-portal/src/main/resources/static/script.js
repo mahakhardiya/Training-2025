@@ -10,6 +10,17 @@ document.getElementById("showAddFormBtn").addEventListener("click", function () 
     document.getElementById("addEmployeeForm").style.display = "block";
 });
 
+// ✅ Logout Functionality
+document.getElementById("logoutBtn").addEventListener("click", function () {
+    localStorage.removeItem("hrLoggedIn"); // Remove login state
+    window.location.href = "index.html"; // Redirect to login page
+});
+
+// ✅ Close Form Function
+function closeForm(formId) {
+    document.getElementById(formId).style.display = "none";
+}
+
 // ✅ Helper function for API requests
 async function fetchData(url, options = {}) {
     try {
