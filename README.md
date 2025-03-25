@@ -1,5 +1,4 @@
-# NucleusTeq  
-## Assignment Training and Projects  
+# NucleusTeq Assignment Training and Projects  
 Welcome to **NucleusTeq's** Assignment Training and Projects repository.  
 This repository contains all the projects and training assignments.  
 
