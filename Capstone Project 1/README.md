@@ -1,7 +1,7 @@
-# 📦 Inventory Management System for Pantry
-
-## 📝 Project Overview  
-The **Inventory Management System for Pantry** is designed to efficiently track and manage pantry stock. It helps users monitor available items, receive alerts for low stock, and manage inventory updates with ease.  
+# 📦 Smart Inventory Management System ☕🍪
+A sleek and modern inventory management system with a Minimal & Elegant (Beige & Coffee) theme.
+## 🚀 Overview
+The Smart Inventory Management System is a web-based solution designed to streamline inventory tracking, stock management, and transactions efficiently. It features a modern, fully responsive UI with smooth animations and an elegant café-inspired theme.
 
 ---
 
@@ -14,9 +14,9 @@ The **Inventory Management System for Pantry** is designed to efficiently track 
 - **JWT (JSON Web Token)** – Secure authentication  
 
 ### **Frontend** (In Progress 🚧)  
-- **HTML, CSS, JavaScript** – User interface  
-- **Fetch API / Axios** – Consuming backend services  
-- **Bootstrap / Tailwind CSS** – Styling and responsiveness  
+- **React (with hooks & context API)** – User interface  
+- **Axios** – Consuming backend services  
+- **CSS (Custom Theme: Beige & Coffee ☕🍪)** – Styling and responsiveness  
 
 ---
 
@@ -30,10 +30,17 @@ The **Inventory Management System for Pantry** is designed to efficiently track 
 
 ---
 
+## 🔐 Authentication & Security
+Uses JWT Authentication for secure login/logout.
+
+Role-Based Access Control (RBAC) ensures different permissions for Admin, Manager, and Staff.
+
+Protected API routes with Spring Security.
+
 ## 📂 Folder Structure  
 
 ```bash
-📦 Inventory-Management-System
+📦 Capstone Project 1
  ┣ 📂 backend (Spring Boot)
  ┃ ┣ 📂 src/main/java/com/sims
  ┃ ┃ ┣ 📂 dto (Data Transfer Objects)
@@ -46,8 +53,4 @@ The **Inventory Management System for Pantry** is designed to efficiently track 
  ┃ ┃ ┣ 📂 config (Configuration)
  ┃ ┃ ┗ 📜 Application.java (Main entry point)
  ┃ ┣ 📂 resources (Configurations)
- ┣ 📂 frontend (HTML, CSS, JS) --- in progress
- ┃ ┣ 📜 index.html (Dashboard UI)
- ┃ ┣ 📜 inventory.js (API calls)
- ┃ ┣ 📜 styles.css (Styling)
  ┣ 📜 README.md
