@@ -40,17 +40,34 @@ Protected API routes with Spring Security.
 ## 📂 Folder Structure  
 
 ```bash
-📦 Capstone Project 1
- ┣ 📂 backend (Spring Boot)
- ┃ ┣ 📂 src/main/java/com/sims
- ┃ ┃ ┣ 📂 dto (Data Transfer Objects)
- ┃ ┃ ┣ 📂 enums (User Roles)
- ┃ ┃ ┣ 📂 models (Database entities)
- ┃ ┃ ┣ 📂 repositories (JPA Repositories)
- ┃ ┃ ┣ 📂 security (Authentication & Authorization)
- ┃ ┃ ┣ 📂 service (Business logic)
- ┃ ┃ ┣ 📂 controllers (REST APIs)
- ┃ ┃ ┣ 📂 config (Configuration)
- ┃ ┃ ┗ 📜 Application.java (Main entry point)
- ┃ ┣ 📂 resources (Configurations)
- ┣ 📜 README.md
+📦 Inventory-Management-System  
+ ┣ 📂 Backend (Spring Boot)  
+ ┃ ┣ 📂 src/main/java/com/sims  
+ ┃ ┃ ┣ 📂 dto           # Data Transfer Objects  
+ ┃ ┃ ┣ 📂 enums         # User Roles & Status  
+ ┃ ┃ ┣ 📂 models        # Database Entities  
+ ┃ ┃ ┣ 📂 repositories  # JPA Repositories  
+ ┃ ┃ ┣ 📂 security      # Authentication & Authorization  
+ ┃ ┃ ┣ 📂 service       # Business Logic & Services  
+ ┃ ┃ ┣ 📂 controllers   # REST API Controllers  
+ ┃ ┃ ┣ 📂 config        # App Configuration (CORS, JWT, etc.)  
+ ┃ ┃ ┗ 📜 Application.java  # Main entry point  
+ ┃ ┣ 📂 resources  
+ ┃ ┃ ┣ 📜 application.properties  # Backend Configuration   
+ ┃ ┣ 📜 pom.xml         # Maven Dependencies  
+ ┃ ┗ 📜 README.md       # Backend Documentation  
+ ┣ 📂 Frontend (React)  
+ ┃ ┣ 📂 src  
+ ┃ ┃ ┣ 📂 component    # Reusable UI Components  
+ ┃ ┃ ┣ 📂 pages         # Individual Pages (Dashboard, Login, etc.)  
+ ┃ ┃ ┣ 📂 images        # Images, Icons, Fonts  
+ ┃ ┃ ┣ 📂 service      # API Calls & Authentication  
+ ┃ ┃ ┗ index.css        # CSS & Theme Files
+ ┃ ┃ ┗ app.js
+ ┃ ┣ 📜 package.json    # Project Dependencies  
+ ┃ ┣ 📜 .env            # Environment Variables  
+ ┃ ┗ 📜 README.md       # Frontend Documentation  
+ ┣ 📜 .gitignore        # Ignored Files  
+ ┣ 📜 README.md         # Project Overview  
+ ┗ 📜 LICENSE           # License Information  
+
