@@ -33,7 +33,7 @@ public class ProductServiceImpl implements ProductService {
 
     // AFTER YOUR FRONTEND IS SETUP CHANGE THE IMAGE DIRECTORY TO YHE FRONTEND YOU
     // ARE USING
-    private static final String IMAGE_DIRECTORY_2 = "C:\\Users\\mahak\\Desktop\\IMS\\ims-frontend\\public\\product";
+    private static final String IMAGE_DIRECTORY_2 = "C:\\Users\\mahak\\Desktop\\nteq-assessments\\Capstone Project 1\\ims-frontend\\public\\product";
 
     @Override
     public Response saveProduct(ProductDTO productDTO, MultipartFile imageFile) {

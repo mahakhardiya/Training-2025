@@ -24,7 +24,7 @@ public class TransactionDTO {
 
     private BigDecimal totalPrice;
 
-    private TransactionType transacationType; // purchase, sale, return
+    private TransactionType transactionType; // purchase, sale, return
 
     private TransactionStatus status; // pending. completed, processing
 
