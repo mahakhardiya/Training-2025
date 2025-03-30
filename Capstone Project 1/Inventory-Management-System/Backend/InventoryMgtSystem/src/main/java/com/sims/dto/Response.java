@@ -44,4 +44,7 @@ public class Response {
     private List<TransactionDTO> transactions;
 
     private final LocalDateTime timestamp = LocalDateTime.now();
+
+    // ✅ Add alerts field
+    private List<String> alerts;
 }

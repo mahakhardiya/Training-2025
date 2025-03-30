@@ -85,4 +85,10 @@ public class ProductController {
         return ResponseEntity.ok(productService.searchProduct(input));
     }
 
+    // ✅ New Endpoint: Get alerts for low-stock and expiry products
+    @GetMapping("/alerts")
+    public ResponseEntity<Response> getProductAlerts() {
+        return ResponseEntity.ok(productService.checkAlerts());
+    }
+
 }
