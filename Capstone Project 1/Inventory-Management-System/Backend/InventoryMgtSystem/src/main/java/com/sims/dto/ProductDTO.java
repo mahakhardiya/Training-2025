@@ -38,4 +38,7 @@ public class ProductDTO {
 
     private LocalDateTime createdAt;
 
+    // ✅ Included lowStockThreshold for better control
+    private String lowStockThreshold;
+
 }

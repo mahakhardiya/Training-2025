@@ -48,6 +48,11 @@ public class Product {
     private LocalDateTime expiryDate;
     private String imageUrl;
 
+    @Column(nullable = false)
+    @NotBlank(message = "Low stock threshold is required")
+    @Builder.Default
+    private String lowStockThreshold = "10"; // Default threshold as a string
+
     private final LocalDateTime createdAt = LocalDateTime.now();
 
     @ManyToOne
@@ -58,7 +63,8 @@ public class Product {
     public String toString() {
         return "Product [id=" + id + ", name=" + name + ", sku=" + sku + ", price=" + price + ", stockQuantity="
                 + stockQuantity + ", description=" + description + ", expiryDate=" + expiryDate + ", imageUrl="
-                + imageUrl + ", createdAt=" + createdAt + ", category=" + category + "]";
+                + imageUrl + ", lowStockThreshold=" + lowStockThreshold + ", createdAt=" + createdAt + ", category="
+                + category + "]";
     }
 
 }
