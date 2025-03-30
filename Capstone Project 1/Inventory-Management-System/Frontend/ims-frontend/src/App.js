@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ProtectedRoute, AdminRoute } from "./service/Auth";
+import { ToastContainer } from "react-toastify"; // ✅ Import ToastContainer
+import "react-toastify/dist/ReactToastify.css"; // ✅ Import Toast CSS
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import CategoryPage from "./pages/CategoryPage";
@@ -21,41 +23,35 @@ import DashboardPage from "./pages/DashboardPage";
 function App() {
   return (
     <Router>
+      {/* ✅ ToastContainer for global notifications */}
+      <ToastContainer position="top-right" autoClose={3000} />
+
       <Routes>
-      <Route path="/" element={<HomePage/>}/>
-        <Route path="/register" element={<RegisterPage/>}/>
-        <Route path="/login" element={<LoginPage/>}/>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
 
         {/* ADMIN ROUTES */}
-        <Route path="/category" element={<AdminRoute element={<CategoryPage/>}/>}/>
-        <Route path="/supplier" element={<AdminRoute element={<SupplierPage/>}/>}/>
-        <Route path="/add-supplier" element={<AdminRoute element={<AddEditSupplierPage/>}/>}/>
-        <Route path="/edit-supplier/:supplierId" element={<AdminRoute element={<AddEditSupplierPage/>}/>}/>
-        <Route path="/product" element={<AdminRoute element={<ProductPage/>}/>}/>
+        <Route path="/category" element={<AdminRoute element={<CategoryPage />} />} />
+        <Route path="/supplier" element={<AdminRoute element={<SupplierPage />} />} />
+        <Route path="/add-supplier" element={<AdminRoute element={<AddEditSupplierPage />} />} />
+        <Route path="/edit-supplier/:supplierId" element={<AdminRoute element={<AddEditSupplierPage />} />} />
+        <Route path="/product" element={<AdminRoute element={<ProductPage />} />} />
+        <Route path="/add-product" element={<AdminRoute element={<AddEditProductPage />} />} />
+        <Route path="/edit-product/:productId" element={<AdminRoute element={<AddEditProductPage />} />} />
 
+        {/* ADMIN AND USERS ROUTES */}
+        <Route path="/purchase" element={<ProtectedRoute element={<PurchasePage />} />} />
+        <Route path="/sell" element={<ProtectedRoute element={<SellPage />} />} />
+        <Route path="/transaction" element={<ProtectedRoute element={<TransactionsPage />} />} />
+        <Route path="/transaction/:transactionId" element={<ProtectedRoute element={<TransactionDetailsPage />} />} />
+        <Route path="/profile" element={<ProtectedRoute element={<ProfilePage />} />} />
+        <Route path="/dashboard" element={<ProtectedRoute element={<DashboardPage />} />} />
 
-        <Route path="/add-product" element={<AdminRoute element={<AddEditProductPage/>}/>}/>
-        <Route path="/edit-product/:productId" element={<AdminRoute element={<AddEditProductPage/>}/>}/>
-
-          {/* ADMIN AND USERS ROUTES */}
-        <Route path="/purchase" element={<ProtectedRoute element={<PurchasePage/>}/>}/>
-        <Route path="/sell" element={<ProtectedRoute element={<SellPage/>}/>}/>
-        <Route path="/transaction" element={<ProtectedRoute element={<TransactionsPage/>}/>}/>
-        <Route path="/transaction/:transactionId" element={<ProtectedRoute element={<TransactionDetailsPage/>}/>}/>
-
-        <Route path="/profile" element={<ProtectedRoute element={<ProfilePage/>}/>}/>
-        <Route path="/dashboard" element={<ProtectedRoute element={<DashboardPage/>}/>}/>
-
-
-
-        <Route path="*" element={<LoginPage/>}/>
-
-
-        
-
+        <Route path="*" element={<LoginPage />} />
       </Routes>
     </Router>
-  )
+  );
 }
 
 export default App;

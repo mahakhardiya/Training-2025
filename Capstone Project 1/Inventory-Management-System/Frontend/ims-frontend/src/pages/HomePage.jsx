@@ -18,10 +18,9 @@ const HomePage = () => {
         <div className="hero">
           <div className="hero-overlay"></div>
           <div className="hero-content">
-            <h1 className="hero-title">Brew Efficiency, One Cup at a Time ☕</h1>
+            <h1 className="hero-title">Take Control of Your Pantry Like Never Before</h1>
             <p className="hero-subtitle">
-              Your café’s secret ingredient to effortless inventory management. 
-              Keep your pantry stocked, your customers happy, and your business brewing!
+             Keep Your Shelves Stocked and Your Business Running Smoothly with Intelligent Pantry Management
             </p>
             <button onClick={() => navigate("/dashboard")} className="btn">
               Get Started
@@ -37,17 +36,17 @@ const HomePage = () => {
               {
                 img: feature1,
                 title: "Fresh Stock Alerts",
-                desc: "Never run out of coffee beans, milk, or cookies! Get real-time stock updates.",
+                desc: "Never run out of essential pantry items! Get real-time notifications when stock levels drop.",
               },
               {
                 img: feature2,
-                title: "Daily Brew Insights",
-                desc: "Track ingredient usage, sales trends, and pantry performance – because every espresso shot counts.",
+                title: "Seamless Order Management ",
+                desc: "Restock with confidence using predictive analytics.",
               },
               {
                 img: feature3,
                 title: "Smooth & Simple Interface",
-                desc: "Manage inventory with a sleek, café-inspired dashboard. No clutter, just easy controls.",
+                desc: "Manage inventory with ease using a clutter-free, user-friendly interface designed for efficiency.",
               }
               // ,
               // {

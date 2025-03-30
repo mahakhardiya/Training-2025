@@ -73,6 +73,7 @@ const PurchasePage = () => {
   };
 
   return (
+    <div className="bod">
     <Layout>
       {message && <div className="message">{message}</div>}
       <div className="purchase-form-page">
@@ -145,7 +146,9 @@ const PurchasePage = () => {
           <button type="submit">Purchase Product</button>
         </form>
       </div>
+      
     </Layout>
+    </div>
   );
 };
 export default PurchasePage;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import HomePageLayout from "../component/HomePageLayout";
 import ApiService from "../service/ApiService";
 
 const LoginPage = () => {
@@ -39,10 +40,12 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="auth-page"> {/* Background Applied Here */}
+    <div className="bodyy">
+      <HomePageLayout>
+      <div className="auth-page"> {/* Background Applied Here */}
       <div className="auth-container">
       <h2 className="typewriter">
-          <span className="type-text">Welcome Back ☕</span>
+          <span className="type-text">Welcome Back</span>
         </h2>
 
         {message && <p className="message">{message}</p>}
@@ -69,6 +72,10 @@ const LoginPage = () => {
         <p>Don't have an account? <a href="/register">Register</a></p>
       </div>
     </div>
+    </HomePageLayout>
+    </div>
+    
+    
   );
 };
 export default LoginPage;

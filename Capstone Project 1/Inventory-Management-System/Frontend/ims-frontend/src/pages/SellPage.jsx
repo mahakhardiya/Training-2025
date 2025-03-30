@@ -65,7 +65,8 @@ const SellPage = () => {
   };
 
   return (
-    <Layout>
+    <div className="bod-y">
+      <Layout>
       {message && <div className="message">{message}</div>}
       <div className="purchase-form-page">
         <h1>Sell Product</h1>
@@ -122,7 +123,8 @@ const SellPage = () => {
           <button type="submit">Sell Product</button>
         </form>
       </div>
-    </Layout>
+     </Layout>
+    </div>
   );
 };
 export default SellPage;

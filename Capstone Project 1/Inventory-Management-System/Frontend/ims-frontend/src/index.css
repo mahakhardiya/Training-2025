@@ -3,14 +3,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border: none;
 }
 
 /* Home Page Styling */
 /* Global Container */
 .home-container {
-  background-color: #FAF3E0; /* Soft Beige */
-  padding: 50px 20px;
+  background-color: #F2F2F2; /* Soft Beige */
 }
 
 /* Hero Section */
@@ -18,7 +16,7 @@
   position: relative;
   text-align: center;
   padding: 80px 20px;
-  background: url("images/cafe.jpg") no-repeat center/cover;
+  background: url("images/pic1.jpg") no-repeat center/cover;
   border-radius: 10px;
   color: whitesmoke;
 }
@@ -53,7 +51,7 @@
 }
 
 .btn {
-  background-color: #3E2723;
+  background-color: #D4A373;
   color: white;
   padding: 12px 24px;
   border-radius: 8px;
@@ -75,7 +73,7 @@
 
 .section-title {
   font-size: 2rem;
-  color: #3E2723;
+  color: #5A3E30;
   margin-bottom: 30px;
   font-weight: bold;
 }
@@ -114,7 +112,7 @@
 }
 
 .feature h3 {
-  color: #3E2723;
+  color: #5A3E30;
   font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 10px;
@@ -129,9 +127,12 @@
 
 
 /* AUTH CONTAINER */
-.auth-page {
-  background: url('images/cafe.jpg');
+.bodyy{
+  background: url('images/pic2.jpg');
   background-size: cover;
+}
+
+.auth-page {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -141,12 +142,12 @@
 .typewriter {
   font-size: 1.7rem;
   font-weight: bold;
-  color: #3E2723; /* Espresso Brown */
+  color: #5A3E30; /* Espresso Brown */
   margin-bottom: 15px;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 3px solid #3E2723; /* Cursor effect */
+  border-right: 3px solid #5A3E30; /* Cursor effect */
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
@@ -190,7 +191,7 @@
   margin-bottom: 20px;
   font-size: 26px;
   font-weight: bold;
-  color: #3E2723; /* Espresso Brown */
+  color: #5A3E30;
 }
 
 /* FORM */
@@ -204,15 +205,15 @@
   margin-bottom: 15px;
   padding: 12px;
   font-size: 16px;
-  border: 1px solid #C6A87D; /* Warm Beige */
+  border: 1px solid #2C2C2C; /* Warm Beige */
   border-radius: 8px;
   background-color: #F5F5DC; /* Off-White */
-  color: #3E2723; /* Espresso Brown */
+  color: #5A3E30; /* Espresso Brown */
   transition: all 0.3s ease-in-out;
 }
 
 .auth-container input:focus {
-  border-color: #C6A87D; /* Warm Beige */
+  border-color: #2C2C2C; /* Warm Beige */
   outline: none;
   box-shadow: 0px 0px 8px rgba(198, 168, 125, 0.6);
 }
@@ -221,7 +222,7 @@
 button[type="submit"] {
   width: 100%;
   padding: 12px;
-  background: linear-gradient(135deg, #C6A87D, #A47551); /* Warm Gradient */
+  background: linear-gradient(135deg, #2C2C2C, #A47551); /* Warm Gradient */
   color: white;
   border: none;
   border-radius: 8px;
@@ -233,7 +234,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background: linear-gradient(135deg, #A47551, #C6A87D); /* Reversed Gradient */
+  background: linear-gradient(135deg, #A47551, #2C2C2C); /* Reversed Gradient */
   transform: scale(1.05);
   box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
 }
@@ -242,7 +243,7 @@ button[type="submit"]:hover {
 .auth-container p {
   font-size: 14px;
   margin-top: 15px;
-  color: #3E2723;
+  color: #D4A373;
 }
 
 .auth-container a {
@@ -280,11 +281,46 @@ button[type="submit"]:hover {
   }
 }
 
+.alerts-section {
+  background-color: #fdf3e7;
+  border: 1px solid #d69c4e;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.alerts-section h2 {
+  color: #8b4513;
+}
+
+.alerts-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.alert-item {
+  background-color: #fff4e3;
+  border: 1px solid #e2b97f;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+/* Expiring Soon (Red Background) */
+.expiring-soon {
+  background-color: #ffcccc !important; /* Light Red */
+  border: 2px solid red;
+}
+
+/* Low Stock (Yellow Background) */
+.low-stock {
+  background-color: #fff3cd !important; /* Light Yellow */
+  border: 2px solid #D4A373;
+}
 
 
 
 
-/* NAVBAR STYLING - Café Pantry ☕🍪 */
 
 /* Header Styling */
 .header {
@@ -295,30 +331,41 @@ button[type="submit"]:hover {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #C6A87D; /* Your navbar color */
-  padding: 15px 20px;
+  background-color: #2C2C2C; /* Warm Beige */
+  padding: 15px 25px;
   z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Brand Name */
+/* Left Side (Logo) */
 .ims {
   font-size: 22px;
   font-weight: bold;
-  color: #3E2723; /* Espresso Brown */
+  color: #D4A373;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .ims p {
   font-size: 12px;
   margin: 0;
-  color: #3E2723;
+  color: #D4A373;
+}
+
+/* Right Side */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 /* Navbar Links */
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 15px;
+  gap: 20px;
 }
 
 .nav-links li {
@@ -327,23 +374,84 @@ button[type="submit"]:hover {
 
 .nav-links a {
   text-decoration: none;
-  color: #3E2723; /* Espresso Brown */
+  color: #D4A373;
   padding: 10px 15px;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #E4C9A1; /* Soft Mocha */
+  color: #E4C9A1;
 }
 
-/* Responsive Menu Button */
+/* 🔔 Notification Icon */
+.notification-container {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.notification-icon {
+  font-size: 22px;
+  color: #D4A373;
+  transition: color 0.3s ease;
+}
+
+.notification-icon:hover {
+  color: #E4C9A1;
+}
+
+/* 🔴 Notification Badge */
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🔽 Notification Dropdown */
+.notification-dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1001;
+}
+
+.notification-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  color: #D4A373;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+/* Mobile Responsive */
 .menu-toggle {
   display: none;
   font-size: 24px;
   cursor: pointer;
   background: none;
   border: none;
-  color: #3E2723;
+  color: #D4A373;
 }
 
 @media (max-width: 768px) {
@@ -354,7 +462,7 @@ button[type="submit"]:hover {
     top: 60px;
     right: 0;
     width: 100%;
-    background: #C6A87D;
+    background: #2C2C2C;
     text-align: center;
     padding: 20px 0;
   }
@@ -370,6 +478,10 @@ button[type="submit"]:hover {
 
 
 
+.logo-link{
+  text-decoration: none;
+  color: #D4A373;
+}
 
 
 
@@ -395,6 +507,11 @@ button[type="submit"]:hover {
 
 
 /* CATEGORY PAGE */
+
+.bod-yy{
+  background-color: bisque;
+} 
+
 .category-page {
   max-width: 900px;
   margin: 20px auto;
@@ -403,6 +520,7 @@ button[type="submit"]:hover {
 
 /* CATEGORY TITLE */
 .category-title {
+  color: #5A3E30;
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -420,13 +538,13 @@ button[type="submit"]:hover {
   width: 250px;
   padding: 10px;
   font-size: 16px;
-  border: 2px solid #C6A87D;
+  border: 2px solid #2C2C2C;
   border-radius: 6px;
   outline: none;
 }
 
 .category-button {
-  background: #C6A87D;
+  background: #2C2C2C;
   color: white;
   padding: 10px 16px;
   border: none;
@@ -457,7 +575,7 @@ button[type="submit"]:hover {
   font-size: 18px;
   background: #FAF3E0;
   border-radius: 10px;
-  color: #3E2723;
+  color: #5A3E30;
   font-weight: 550;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
@@ -475,7 +593,7 @@ button[type="submit"]:hover {
 
 .edit-button,
 .delete-button {
-  background: #C6A87D;
+  background: #2C2C2C;
   color: white;
   padding: 8px 14px;
   border: none;
@@ -490,7 +608,7 @@ button[type="submit"]:hover {
 }
 
 .delete-button {
-  background: #9E6F50;
+  background: #7B1C1C;
 }
 
 .delete-button:hover {
@@ -531,13 +649,13 @@ button[type="submit"]:hover {
 .supplier-header h1 {
   font-size: 28px;
   font-weight: bold;
-  color: #3E2723; /* Espresso Brown */
+  color: #5A3E30; /* Espresso Brown */
 }
 
 /* ADD SUPPLIER BUTTON */
 .supplier-header button {
   padding: 12px 15px;
-  background: linear-gradient(135deg, #C6A87D, #A47551); /* Warm Beige to Mocha */
+  background: linear-gradient(135deg, #2C2C2C, #A47551); /* Warm Beige to Mocha */
   font-size: 16px;
   color: white;
   font-weight: bold;
@@ -549,7 +667,7 @@ button[type="submit"]:hover {
 }
 
 .supplier-header button:hover {
-  background: linear-gradient(135deg, #A47551, #C6A87D);
+  background: linear-gradient(135deg, #A47551, #2C2C2C);
   transform: scale(1.05);
 }
 
@@ -569,7 +687,7 @@ button[type="submit"]:hover {
   font-size: 18px;
   background: #FAF3E0; /* Soft Beige */
   border-radius: 10px;
-  color: #3E2723; /* Espresso Brown */
+  color: #5A3E30; /* Espresso Brown */
   font-weight: 550;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
@@ -583,7 +701,7 @@ button[type="submit"]:hover {
 .supplier-actions button {
   margin-left: 10px;
   padding: 8px 15px;
-  background: linear-gradient(135deg, #C6A87D, #A47551);
+  background: linear-gradient(135deg, #2C2C2C, #A47551);
   font-size: 16px;
   color: white;
   border: none;
@@ -593,7 +711,7 @@ button[type="submit"]:hover {
 }
 
 .supplier-actions button:hover {
-  background: linear-gradient(135deg, #A47551, #C6A87D);
+  background: linear-gradient(135deg, #A47551, #2C2C2C);
   transform: scale(1.05);
 }
 
@@ -620,7 +738,7 @@ button[type="submit"]:hover {
 .supplier-form-page h1 {
   font-size: 2rem;
   font-weight: bold;
-  color: #3E2723; /* Espresso Brown */
+  color: #D4A373; /* Espresso Brown */
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -634,7 +752,7 @@ button[type="submit"]:hover {
   display: block;
   font-size: 1rem;
   font-weight: bold;
-  color: #3E2723;
+  color: #D4A373;
   margin-bottom: 8px;
 }
 
@@ -642,11 +760,11 @@ button[type="submit"]:hover {
   width: 100%;
   padding: 10px;
   font-size: 1rem;
-  border: 1px solid #C6A87D;
+  border: 1px solid #2C2C2C;
   border-radius: 8px;
   box-sizing: border-box;
   background-color: #FAF3E0; /* Soft Beige */
-  color: #3E2723;
+  color: #D4A373;
   transition: border-color 0.3s ease;
 }
 
@@ -659,7 +777,7 @@ button[type="submit"]:hover {
 /* SUBMIT BUTTON */
 .supplier-form-page button[type="submit"] {
   padding: 13px 20px;
-  background: linear-gradient(135deg, #C6A87D, #A47551);
+  background: linear-gradient(135deg, #2C2C2C, #A47551);
   color: white;
   border: none;
   border-radius: 8px;
@@ -671,7 +789,7 @@ button[type="submit"]:hover {
 }
 
 .supplier-form-page button[type="submit"]:hover {
-  background: linear-gradient(135deg, #A47551, #C6A87D);
+  background: linear-gradient(135deg, #A47551, #2C2C2C);
   transform: scale(1.05);
 }
 
@@ -703,12 +821,12 @@ button[type="submit"]:hover {
 .product-header h1 {
   font-size: 2rem;
   font-weight: bold;
-  color: #3E2723; /* Espresso Brown */
+  color: #5A3E30; /* Espresso Brown */
 }
 
 .add-product-btn {
   padding: 13px 20px;
-  background-color: #C6A87D; /* Warm Beige */
+  background-color: #2C2C2C; /* Warm Beige */
   color: white;
   border: none;
   border-radius: 5px;
@@ -718,7 +836,7 @@ button[type="submit"]:hover {
 }
 
 .add-product-btn:hover {
-  background-color: #3E2723; /* Espresso Brown */
+  background-color: #D4A373; /* Espresso Brown */
 }
 
 /* PRODUCT LIST */
@@ -756,7 +874,7 @@ button[type="submit"]:hover {
 .product-info .name {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #3E2723; /* Espresso Brown */
+  color: #5A3E30; /* Espresso Brown */
   margin-bottom: 10px;
 }
 
@@ -786,12 +904,12 @@ button[type="submit"]:hover {
 }
 
 .edit-btn {
-  background-color: #C6A87D; /* Warm Beige */
+  background-color: #2C2C2C; /* Warm Beige */
   color: white;
 }
 
 .edit-btn:hover {
-  background-color: #3E2723; /* Espresso Brown */
+  background-color: #D4A373; /* Espresso Brown */
 }
 
 .delete-btn {
@@ -832,7 +950,7 @@ button[type="submit"]:hover {
 .product-form-page h1 {
   font-size: 2rem;
   font-weight: bold;
-  color: #3E2723; /* Espresso Brown */
+  color: #D4A373; /* Espresso Brown */
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -851,7 +969,7 @@ button[type="submit"]:hover {
 
 .product-form-page .form-group label {
   font-size: 1rem;
-  color: #3E2723; /* Espresso Brown */
+  color: #D4A373; /* Espresso Brown */
   margin-bottom: 8px;
 }
 
@@ -859,7 +977,7 @@ button[type="submit"]:hover {
 .product-form-page .form-group select,
 .product-form-page .form-group textarea {
   padding: 10px;
-  border: 1px solid #C6A87D; /* Warm Beige Border */
+  border: 1px solid #2C2C2C; /* Warm Beige Border */
   border-radius: 5px;
   font-size: 1rem;
   width: 100%;
@@ -870,7 +988,7 @@ button[type="submit"]:hover {
 .product-form-page .form-group input:focus,
 .product-form-page .form-group select:focus,
 .product-form-page .form-group textarea:focus {
-  border-color: #3E2723; /* Espresso Brown */
+  border-color: #D4A373; /* Espresso Brown */
   outline: none;
 }
 
@@ -881,7 +999,7 @@ button[type="submit"]:hover {
 
 .product-form-page button {
   padding: 12px 20px;
-  background-color: #C6A87D; /* Warm Beige */
+  background-color: #2C2C2C; /* Warm Beige */
   color: white;
   border: none;
   border-radius: 5px;
@@ -892,7 +1010,7 @@ button[type="submit"]:hover {
 }
 
 .product-form-page button:hover {
-  background-color: #3E2723; /* Espresso Brown */
+  background-color: #D4A373; /* Espresso Brown */
 }
 
 /* IMAGE PREVIEW */
@@ -921,19 +1039,42 @@ button[type="submit"]:hover {
 
 
 /* PURCHASE/SELL PAGE STYLING */
+
+.bod{
+  background-image: url('images/cafe2.jpg'); /* Update path */
+  background-size: cover;
+  background-position: center;
+  
+}
+
+.bod-y {
+  background-image: url('images/cafe2.jpg'); /* Update path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;  /* Ensures full-page coverage */
+  /* width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: 0;  */
+}
+
+
 .purchase-form-page {
   max-width: 600px;
   margin: 30px auto;
   padding: 20px;
   background-color: #FFFFFF; /* White Background */
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .purchase-form-page h1 {
   text-align: center;
   margin-bottom: 20px;
-  color: #3E2723; /* Espresso Brown */
+  color: #5A3E30; /* Espresso Brown */
 }
 
 .purchase-form-page .form-group {
@@ -944,7 +1085,7 @@ button[type="submit"]:hover {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #3E2723; /* Espresso Brown */
+  color: #5A3E30; /* Espresso Brown */
   margin: 10px;
   font-weight: 550;
 }
@@ -954,8 +1095,8 @@ button[type="submit"]:hover {
 .purchase-form-page .form-group textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #C6A87D; /* Warm Beige Border */
-  border-radius: 4px;
+  border: 1px solid #2C2C2C; /* Warm Beige Border */
+  border-radius: 7px;
   box-sizing: border-box;
   background-color: #F5F5DC; /* Off-White Background */
 }
@@ -963,7 +1104,7 @@ button[type="submit"]:hover {
 .purchase-form-page .form-group input:focus,
 .purchase-form-page .form-group select:focus,
 .purchase-form-page .form-group textarea:focus {
-  border-color: #3E2723; /* Espresso Brown */
+  border-color: #5A3E30; /* Espresso Brown */
   outline: none;
 }
 
@@ -991,67 +1132,161 @@ button[type="submit"]:hover {
 
 /* TRANSACTION PAGE STYLING - Café Pantry ☕🍪 */
 
+/* Transactions Page Styles */
 .transactions-page {
   padding: 20px;
 }
 
-/* Header Section */
+/* Header */
 .transactions-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+}
+
+/* Search and CSV Container */
+/* Search & Action Buttons Container */
+.transaction-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
 }
 
 /* Search Bar */
 .transaction-search {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 8px;
+  background: #FAF3E0;
+  border: 2px solid #2C2C2C;
+  border-radius: 8px;
+  padding: 8px 12px;
 }
 
 .transaction-search input {
-  border: 1px solid #3E2723; /* Espresso Brown */
-  padding: 10px;
-  border-radius: 4px;
+  border: none;
+  background: transparent;
   font-size: 16px;
-  background-color: #F5F5DC; /* Off-White */
-  color: #3E2723;
-  transition: border-color 0.3s;
-}
-
-.transaction-search input:focus {
-  border-color: #C6A87D; /* Warm Beige */
+  width: 200px;
   outline: none;
 }
 
-/* Transactions Table */
-.transactions-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+.transaction-search input::placeholder {
+  color: #8B6F47;
+  font-size: 14px;
 }
 
-.transactions-table th,
-.transactions-table td {
-  border: 1px solid #E4C9A1; /* Soft Mocha */
-  padding: 12px;
-  text-align: left;
+/* Search & Download Buttons */
+.transaction-actions button {
+  background-color: #2C2C2C;
+  border: none;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.transaction-actions button:hover {
+  background-color: #B58E6A;
+  transform: translateY(-2px);
+}
+
+.transaction-actions button i {
   font-size: 16px;
 }
 
+/* Table Styling */
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
 .transactions-table th {
-  background-color: #C6A87D; /* Warm Beige */
-  font-weight: bold;
-  color: #3E2723; /* Espresso Brown */
+  background-color: #2C2C2C;
+  padding: 12px;
+  text-align: left;
+  color: white;
 }
 
-.transactions-table tr:nth-child(even) {
-  background-color: #F5F5DC; /* Off-White */
+.transactions-table td {
+  padding: 10px;
+  border-bottom: 1px solid #2C2C2C;
 }
 
-.transactions-table tr:hover {
-  background-color: #E4C9A1; /* Soft Mocha */
-  transition: background-color 0.3s ease-in-out;
+.transactions-table tbody tr:nth-child(even) {
+  background-color: #FAF3E0;
+}
+
+.transactions-table tbody tr:hover {
+  background-color: #E4C9A1;
+}
+
+/* View Details Button */
+.transactions-table button {
+  background-color: #2C2C2C;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.transactions-table button:hover {
+  background-color: #B58E6A;
+}
+
+
+/* View Details Button */
+.transactions-table button {
+  background-color: #2C2C2C;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.transactions-table button:hover {
+  background-color: #B58E6A;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  border: none;
+  padding: 8px 15px;
+  margin: 0 5px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.pagination .active {
+  background-color: #D4A373;
+  color: white;
+}
+
+.pagination button:hover {
+  background-color: #2C2C2C;
+  color: white;
 }
 
 /* Transaction Details Page */
@@ -1082,7 +1317,7 @@ button[type="submit"]:hover {
 .section-card h2 {
   margin-bottom: 15px;
   font-size: 1.8em;
-  color: #3E2723; /* Espresso Brown */
+  color: #5A3E30; /* Espresso Brown */
   border-bottom: 2px solid #E4C9A1; /* Soft Mocha */
   padding-bottom: 10px;
 }
@@ -1091,7 +1326,7 @@ button[type="submit"]:hover {
 .section-card p {
   margin: 10px 0;
   font-size: 1rem;
-  color: #3E2723;
+  color: #5A3E30;
   line-height: 1.6;
 }
 
@@ -1116,7 +1351,7 @@ button[type="submit"]:hover {
 
 .transaction-status-update label {
   font-size: 1rem;
-  color: #3E2723;
+  color: #5A3E30;
   margin-right: 10px;
 }
 
@@ -1124,10 +1359,10 @@ button[type="submit"]:hover {
   padding: 8px 12px;
   font-size: 1rem;
   margin-right: 10px;
-  border: 1px solid #C6A87D; /* Warm Beige */
+  border: 1px solid #2C2C2C; /* Warm Beige */
   border-radius: 8px;
   background-color: #F5F5DC; /* Off-White */
-  color: #3E2723;
+  color: #5A3E30;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -1140,7 +1375,7 @@ button[type="submit"]:hover {
 .transaction-status-update button {
   padding: 10px 15px;
   font-size: 1rem;
-  background-color: #3E2723; /* Espresso Brown */
+  background-color: #5A3E30; /* Espresso Brown */
   color: #F5F5DC; /* Off-White */
   border: none;
   border-radius: 8px;
@@ -1149,8 +1384,8 @@ button[type="submit"]:hover {
 }
 
 .transaction-status-update button:hover {
-  background-color: #C6A87D; /* Warm Beige */
-  color: #3E2723;
+  background-color: #2C2C2C; /* Warm Beige */
+  color: #5A3E30;
   transform: scale(1.05);
 }
 
@@ -1158,8 +1393,8 @@ button[type="submit"]:hover {
 button {
   padding: 10px 15px;
   font-size: 16px;
-  background-color: #C6A87D; /* Warm Beige */
-  color: #3E2723; /* Espresso Brown */
+  background-color: #2C2C2C; /* Warm Beige */
+  color: #D4A373; /* Espresso Brown */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -1219,8 +1454,8 @@ button:hover {
 
 /* Pagination Button */
 .pagination-button {
-  background-color: #C6A87D; /* Warm Beige */
-  color: #3E2723; /* Espresso Brown */
+  background-color: #2C2C2C; /* Warm Beige */
+  color: #D4A373; /* Espresso Brown */
   padding: 12px 18px;
   margin: 0 5px;
   cursor: pointer;
@@ -1235,14 +1470,14 @@ button:hover {
 /* Hover Effect */
 .pagination-button:hover {
   background-color: #E4C9A1; /* Soft Mocha */
-  color: #3E2723;
+  color: #D4A373;
   transform: scale(1.05);
   box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Active Page */
 .pagination-button.active {
-  background-color: #3E2723; /* Espresso Brown */
+  background-color: #D4A373; /* Espresso Brown */
   color: #F5F5DC; /* Off-White */
   font-weight: bold;
   transform: scale(1.1);
@@ -1292,7 +1527,7 @@ button:hover {
   width: 50%;
   text-align: center;
   transition: transform 0.3s ease-in-out;
-  border: 2px solid #C6A87D; /* Warm Beige Border */
+  border: 2px solid #2C2C2C; /* Warm Beige Border */
 }
 
 /* Hover Effect */
@@ -1304,7 +1539,7 @@ button:hover {
 /* Profile Heading */
 .profile-card h1 {
   font-size: 2rem;
-  color: #3E2723; /* Espresso Brown */
+  color: #D4A373; /* Espresso Brown */
   margin-bottom: 30px;
   animation: fadeIn 1s ease-in-out;
   text-transform: capitalize;
@@ -1326,14 +1561,14 @@ button:hover {
   padding: 12px 0;
   font-size: 18px;
   color: #5C4033; /* Deep Coffee */
-  border-bottom: 1px solid #C6A87D; /* Warm Beige */
+  border-bottom: 1px solid #2C2C2C; /* Warm Beige */
   transition: color 0.3s ease;
 }
 
 /* Labels */
 .profile-item label {
   font-weight: bold;
-  color: #3E2723; /* Espresso Brown */
+  color: #D4A373; /* Espresso Brown */
 }
 
 /* Data Text */
@@ -1343,7 +1578,7 @@ button:hover {
 
 /* Hover Effect for Profile Items */
 .profile-item:hover {
-  color: #3E2723;
+  color: #D4A373;
   background: rgba(62, 39, 35, 0.1);
 }
 
@@ -1375,9 +1610,9 @@ button:hover {
   padding: 12px;
   font-size: 15px;
   border-radius: 8px;
-  border: 2px solid #3E2723; /* Espresso Brown */
-  background-color: #E4C9A1; /* Soft Mocha */
-  color: #3E2723; /* Espresso Brown */
+  border: 2px solid #D4A373; /* Espresso Brown */
+  background-color: #5A3E30; /* Soft Mocha */
+  color: #fff4e3; /* Espresso Brown */
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -1385,7 +1620,7 @@ button:hover {
 
 #month-select:hover,
 #year-select:hover {
-  background-color: #C6A87D; /* Warm Beige */
+  background-color: #2C2C2C; /* Warm Beige */
   transform: scale(1.05);
 }
 
@@ -1397,6 +1632,7 @@ button:hover {
 
 /* Button Group */
 .button-group {
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
@@ -1406,10 +1642,10 @@ button:hover {
 .button-group button {
   padding: 14px 22px;
   cursor: pointer;
-  background: #3E2723; /* Espresso Brown */
-  color: white;
+  background: #D4A373; /* Espresso Brown */
+  color: #5A3E30;
   border: none;
-  border-radius: 10px;
+  border-radius: 50px;
   font-size: 16px;
   font-weight: bold;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -1420,14 +1656,14 @@ button:hover {
 }
 
 .button-group button:hover {
-  background-color: #C6A87D; /* Warm Beige */
-  color: #3E2723; /* Espresso Brown */
+  background-color: #2C2C2C;
+  color: #D4A373; 
   transform: translateY(-3px);
 }
 
 .button-group button.active {
-  background-color: #E4C9A1; /* Soft Mocha */
-  color: #3E2723; /* Espresso Brown */
+  background-color: #E4C9A1; 
+  color: #D4A373; 
 }
 
 /* Chart Container */
@@ -1437,13 +1673,13 @@ button:hover {
   background-color: #F5F5DC;
   text-align: center;
   height: 500px;
-  border: 3px solid #C6A87D; /* Soft border */
+  border: 3px solid #2C2C2C; /* Soft border */
 }
 
 /* Message Box */
 .message {
-  background-color: #C6A87D; /* Warm Beige */
-  color: #3E2723; /* Espresso Brown */
+  background-color: #2C2C2C; /* Warm Beige */
+  color: #D4A373; /* Espresso Brown */
   padding: 14px;
   border-radius: 8px;
   text-align: center;

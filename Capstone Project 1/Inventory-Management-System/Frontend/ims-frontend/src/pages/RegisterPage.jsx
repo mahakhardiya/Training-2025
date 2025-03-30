@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import HomePageLayout from "../component/HomePageLayout";
 import ApiService from "../service/ApiService";
 
 const RegisterPage = () => {
@@ -34,7 +35,9 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="auth-page">
+    <div className="bodyy">
+      <HomePageLayout>
+      <div className="auth-page">
       <div className="auth-container">
       <h2 className="typewriter">
       <span className="type-text">Register✍️</span>
@@ -79,6 +82,8 @@ const RegisterPage = () => {
       </form>
       <p>Already have an account? <a href="/login">Login</a></p>
     </div>
+    </div>
+    </HomePageLayout>
     </div>
     
   );

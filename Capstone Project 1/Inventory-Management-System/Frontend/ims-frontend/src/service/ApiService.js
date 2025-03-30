@@ -58,6 +58,17 @@ export default class ApiService {
         }
     }
 
+    static async getAlerts() {
+        try {
+            const response = await axios.get(`${this.BASE_URL}/alerts`, {
+                headers: this.getHeader()
+            });
+            return response.data;  // This should return low stock & expiry alerts
+        } catch (error) {
+            throw error;
+        }
+    }    
+
     /**  AUTH && USERS API */
 
     static async registerUser(registerData) {

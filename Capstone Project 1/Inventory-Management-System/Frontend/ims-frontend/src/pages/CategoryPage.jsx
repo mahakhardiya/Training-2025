@@ -84,7 +84,8 @@ const CategoryPage = () => {
   };
 
   return (
-    <Layout>
+    <div className="bod-yy">
+      <Layout>
       <div className="category-page">
         {/* Display Messages */}
         {message && <div className="message">{message}</div>}
@@ -127,6 +128,7 @@ const CategoryPage = () => {
         )}
       </div>
     </Layout>
+    </div>
   );
 };
 
