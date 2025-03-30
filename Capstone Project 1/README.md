@@ -1,4 +1,4 @@
-# 📦 Smart Inventory Management System ☕🍪
+# 📦 Smart Inventory Management System For Pantry
 A sleek and modern inventory management system with a Minimal & Elegant (Beige & Coffee) theme.
 ## 🚀 Overview
 The Smart Inventory Management System is a web-based solution designed to streamline inventory tracking, stock management, and transactions efficiently. It features a modern, fully responsive UI with smooth animations and an elegant café-inspired theme.
