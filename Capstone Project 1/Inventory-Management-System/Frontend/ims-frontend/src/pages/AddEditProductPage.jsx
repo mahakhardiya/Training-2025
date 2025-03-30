@@ -125,7 +125,7 @@ const AddEditProductPage = () => {
           </div>
 
           <div className="form-group">
-            <label>Sku</label>
+            <label>Stock Keeping Unit (SKU)</label>
             <input
               type="text"
               value={sku}

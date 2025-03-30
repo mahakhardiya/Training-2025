@@ -60,8 +60,8 @@ const TransactionDetailsPage = () => {
               <h2>Transaction Information</h2>
               <p><strong>Type:</strong> {transaction.transactionType || "N/A"}</p>
               <p><strong>Status:</strong> {transaction.status || "N/A"}</p>
-              <p><strong>Description:</strong> {transaction.description || "N/A"}</p>
-              <p><strong>Note:</strong> {transaction.note || "N/A"}</p>
+              {/* <p><strong>Description:</strong> {transaction.description || "N/A"}</p>
+              <p><strong>Note:</strong> {transaction.note || "N/A"}</p> */}
               <p><strong>Total Products:</strong> {transaction.totalProducts || 0}</p>
               <p><strong>Total Price:</strong>  ₹{transaction.totalPrice?.toFixed(2) || "0.00"}</p>
               <p><strong>Created At:</strong> {new Date(transaction.createdAt).toLocaleString()}</p>

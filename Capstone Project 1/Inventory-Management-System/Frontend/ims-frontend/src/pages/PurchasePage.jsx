@@ -77,7 +77,7 @@ const PurchasePage = () => {
     <Layout>
       {message && <div className="message">{message}</div>}
       <div className="purchase-form-page">
-        <h1>Receive Inventory</h1>
+        <h1>New Purchase</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Select product</label>

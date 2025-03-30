@@ -142,7 +142,7 @@
 .typewriter {
   font-size: 1.7rem;
   font-weight: bold;
-  color: #5A3E30; /* Espresso Brown */
+  color: #5A3E30;  
   margin-bottom: 15px;
   text-align: center;
   white-space: nowrap;
@@ -208,7 +208,7 @@
   border: 1px solid #2C2C2C; /* Warm Beige */
   border-radius: 8px;
   background-color: #F5F5DC; /* Off-White */
-  color: #5A3E30; /* Espresso Brown */
+  color: #5A3E30;  
   transition: all 0.3s ease-in-out;
 }
 
@@ -437,7 +437,7 @@ button[type="submit"]:hover {
   padding: 10px;
   border-bottom: 1px solid #ddd;
   font-size: 14px;
-  color: #D4A373;
+  color: #5A3E30;
 }
 
 .notification-item:last-child {
@@ -649,7 +649,7 @@ button[type="submit"]:hover {
 .supplier-header h1 {
   font-size: 28px;
   font-weight: bold;
-  color: #5A3E30; /* Espresso Brown */
+  color: #5A3E30;  
 }
 
 /* ADD SUPPLIER BUTTON */
@@ -687,7 +687,7 @@ button[type="submit"]:hover {
   font-size: 18px;
   background: #FAF3E0; /* Soft Beige */
   border-radius: 10px;
-  color: #5A3E30; /* Espresso Brown */
+  color: #5A3E30;  
   font-weight: 550;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
@@ -727,8 +727,8 @@ button[type="submit"]:hover {
 /* SUPPLIER FORM */
 .supplier-form-page {
   padding: 25px;
-  border-radius: 10px;
-  width: 50%;
+  border-radius: 15px;
+  width: 35%;
   margin: 0 auto;
   margin-top: 3rem;
   background: #F5F5DC; /* Off-White */
@@ -738,7 +738,7 @@ button[type="submit"]:hover {
 .supplier-form-page h1 {
   font-size: 2rem;
   font-weight: bold;
-  color: #D4A373; /* Espresso Brown */
+  color: #5A3E30;  
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -752,7 +752,7 @@ button[type="submit"]:hover {
   display: block;
   font-size: 1rem;
   font-weight: bold;
-  color: #D4A373;
+  color: #5A3E30;
   margin-bottom: 8px;
 }
 
@@ -764,7 +764,7 @@ button[type="submit"]:hover {
   border-radius: 8px;
   box-sizing: border-box;
   background-color: #FAF3E0; /* Soft Beige */
-  color: #D4A373;
+  color: #5A3E30;
   transition: border-color 0.3s ease;
 }
 
@@ -821,7 +821,7 @@ button[type="submit"]:hover {
 .product-header h1 {
   font-size: 2rem;
   font-weight: bold;
-  color: #5A3E30; /* Espresso Brown */
+  color: #5A3E30;  
 }
 
 .add-product-btn {
@@ -836,7 +836,7 @@ button[type="submit"]:hover {
 }
 
 .add-product-btn:hover {
-  background-color: #D4A373; /* Espresso Brown */
+  background-color: #D4A373;  
 }
 
 /* PRODUCT LIST */
@@ -874,7 +874,7 @@ button[type="submit"]:hover {
 .product-info .name {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #5A3E30; /* Espresso Brown */
+  color: #5A3E30;  
   margin-bottom: 10px;
 }
 
@@ -909,7 +909,7 @@ button[type="submit"]:hover {
 }
 
 .edit-btn:hover {
-  background-color: #D4A373; /* Espresso Brown */
+  background-color: #D4A373;  
 }
 
 .delete-btn {
@@ -950,7 +950,7 @@ button[type="submit"]:hover {
 .product-form-page h1 {
   font-size: 2rem;
   font-weight: bold;
-  color: #D4A373; /* Espresso Brown */
+  color: #5A3E30;  
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -969,7 +969,7 @@ button[type="submit"]:hover {
 
 .product-form-page .form-group label {
   font-size: 1rem;
-  color: #D4A373; /* Espresso Brown */
+  color: #5A3E30;  
   margin-bottom: 8px;
 }
 
@@ -988,7 +988,7 @@ button[type="submit"]:hover {
 .product-form-page .form-group input:focus,
 .product-form-page .form-group select:focus,
 .product-form-page .form-group textarea:focus {
-  border-color: #D4A373; /* Espresso Brown */
+  border-color: #5A3E30; 
   outline: none;
 }
 
@@ -1010,7 +1010,7 @@ button[type="submit"]:hover {
 }
 
 .product-form-page button:hover {
-  background-color: #D4A373; /* Espresso Brown */
+  background-color: #D4A373;  
 }
 
 /* IMAGE PREVIEW */
@@ -1074,7 +1074,7 @@ button[type="submit"]:hover {
 .purchase-form-page h1 {
   text-align: center;
   margin-bottom: 20px;
-  color: #5A3E30; /* Espresso Brown */
+  color: #5A3E30;  
 }
 
 .purchase-form-page .form-group {
@@ -1085,7 +1085,7 @@ button[type="submit"]:hover {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #5A3E30; /* Espresso Brown */
+  color: #5A3E30;  
   margin: 10px;
   font-weight: 550;
 }
@@ -1104,7 +1104,7 @@ button[type="submit"]:hover {
 .purchase-form-page .form-group input:focus,
 .purchase-form-page .form-group select:focus,
 .purchase-form-page .form-group textarea:focus {
-  border-color: #5A3E30; /* Espresso Brown */
+  border-color: #5A3E30;  
   outline: none;
 }
 
@@ -1317,7 +1317,7 @@ button[type="submit"]:hover {
 .section-card h2 {
   margin-bottom: 15px;
   font-size: 1.8em;
-  color: #5A3E30; /* Espresso Brown */
+  color: #5A3E30;  
   border-bottom: 2px solid #E4C9A1; /* Soft Mocha */
   padding-bottom: 10px;
 }
@@ -1375,7 +1375,7 @@ button[type="submit"]:hover {
 .transaction-status-update button {
   padding: 10px 15px;
   font-size: 1rem;
-  background-color: #5A3E30; /* Espresso Brown */
+  background-color: #5A3E30;  
   color: #F5F5DC; /* Off-White */
   border: none;
   border-radius: 8px;
@@ -1394,7 +1394,7 @@ button {
   padding: 10px 15px;
   font-size: 16px;
   background-color: #2C2C2C; /* Warm Beige */
-  color: #D4A373; /* Espresso Brown */
+  color: #D4A373;  
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -1455,7 +1455,7 @@ button:hover {
 /* Pagination Button */
 .pagination-button {
   background-color: #2C2C2C; /* Warm Beige */
-  color: #D4A373; /* Espresso Brown */
+  color: #D4A373;  
   padding: 12px 18px;
   margin: 0 5px;
   cursor: pointer;
@@ -1477,7 +1477,7 @@ button:hover {
 
 /* Active Page */
 .pagination-button.active {
-  background-color: #D4A373; /* Espresso Brown */
+  background-color: #D4A373;  
   color: #F5F5DC; /* Off-White */
   font-weight: bold;
   transform: scale(1.1);
@@ -1524,7 +1524,7 @@ button:hover {
   border-radius: 15px;
   box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
   padding: 40px;
-  width: 50%;
+  width: 30%;
   text-align: center;
   transition: transform 0.3s ease-in-out;
   border: 2px solid #2C2C2C; /* Warm Beige Border */
@@ -1539,7 +1539,7 @@ button:hover {
 /* Profile Heading */
 .profile-card h1 {
   font-size: 2rem;
-  color: #D4A373; /* Espresso Brown */
+  color: #5A3E30;  
   margin-bottom: 30px;
   animation: fadeIn 1s ease-in-out;
   text-transform: capitalize;
@@ -1568,7 +1568,7 @@ button:hover {
 /* Labels */
 .profile-item label {
   font-weight: bold;
-  color: #D4A373; /* Espresso Brown */
+  color: #5A3E30;  
 }
 
 /* Data Text */
@@ -1596,6 +1596,39 @@ button:hover {
 
 
 /* DASHBOARD STYLING */
+.alert-section {
+  background: #fff5e6;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.alert-card {
+  display: flex;
+  justify-content: space-between;
+  background: #ffcccb;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.alert-card.expiring {
+  background: #ffe699;
+}
+
+.alert-card button {
+  background: #3e2723;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.alert-card button:hover {
+  background: #5d4037;
+}
+
 
 /* Filter Section */
 .filter-section {
@@ -1610,9 +1643,9 @@ button:hover {
   padding: 12px;
   font-size: 15px;
   border-radius: 8px;
-  border: 2px solid #D4A373; /* Espresso Brown */
+  border: 2px solid #D4A373;  
   background-color: #5A3E30; /* Soft Mocha */
-  color: #fff4e3; /* Espresso Brown */
+  color: #fff4e3;  
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -1642,7 +1675,7 @@ button:hover {
 .button-group button {
   padding: 14px 22px;
   cursor: pointer;
-  background: #D4A373; /* Espresso Brown */
+  background: #D4A373;  
   color: #5A3E30;
   border: none;
   border-radius: 50px;
@@ -1679,7 +1712,7 @@ button:hover {
 /* Message Box */
 .message {
   background-color: #2C2C2C; /* Warm Beige */
-  color: #D4A373; /* Espresso Brown */
+  color: #D4A373;  
   padding: 14px;
   border-radius: 8px;
   text-align: center;

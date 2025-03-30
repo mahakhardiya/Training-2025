@@ -1,16 +1,10 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { toast } from "react-toastify"; // ✅ Import toast for notifications
+import { useNavigate } from "react-router-dom"; // ✅ Added missing import
+import { toast } from "react-toastify"; 
 import Layout from "../component/Layout";
 import ApiService from "../service/ApiService";
 import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar
 } from "recharts";
 
 const DashboardPage = () => {
@@ -18,8 +12,10 @@ const DashboardPage = () => {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [selectedData, setSelectedData] = useState("amount");
   const [transactionData, setTransactionData] = useState([]);
+  const [lowStockAlerts, setLowStockAlerts] = useState([]);
+  const [expiringSoonAlerts, setExpiringSoonAlerts] = useState([]);
+  const navigate = useNavigate(); // ✅ Fix
 
-  // ✅ Optimized fetchTransactions using useCallback
   const fetchTransactions = useCallback(async () => {
     try {
       const transactionResponse = await ApiService.getAllTransactions();
@@ -33,13 +29,12 @@ const DashboardPage = () => {
     }
   }, [selectedMonth, selectedYear]);
 
-  // ✅ Optimized fetchProducts using useCallback
   const fetchProducts = useCallback(async () => {
     try {
       const response = await ApiService.getAllProducts();
       if (response.status === 200) {
         checkLowStock(response.products);
-        checkExpiry(response.products);
+        checkExpiryAlerts(response.products); // ✅ Renamed function
       }
     } catch (error) {
       toast.error("Error fetching products!");
@@ -49,30 +44,37 @@ const DashboardPage = () => {
   useEffect(() => {
     fetchTransactions();
     fetchProducts();
-  }, [fetchTransactions, fetchProducts]); // ✅ Now, no warning!
+  }, [fetchTransactions, fetchProducts]);
 
-  // ✅ Check for Low Stock Products (Handles undefined values)
   const checkLowStock = (products) => {
     const lowStockItems = products.filter(
-      (product) => product.stockQuantity !== undefined && product.stockQuantity <= (product.lowStockThreshold || 5) // Default 5 if undefined
+      (product) => product.stockQuantity !== undefined && product.stockQuantity <= (product.lowStockThreshold || 5)
     );
     lowStockItems.forEach((product) => {
       toast.warn(`⚠️ Low Stock: ${product.name} has only ${product.stockQuantity} left!`);
     });
+    setLowStockAlerts(lowStockItems);
   };
 
-  // ✅ Check for Expired Products (Handles missing expiryDate)
-  const checkExpiry = (products) => {
+  const checkExpiryAlerts = (products) => {
     const today = new Date();
-    const expiredItems = products.filter(
-      (product) => product.expiryDate && new Date(product.expiryDate) < today
+    const sevenDaysLater = new Date();
+    sevenDaysLater.setDate(today.getDate() + 7);
+  
+    const expiringItems = products.filter((product) =>
+      product.expiryDate &&
+      new Date(product.expiryDate) > today &&
+      new Date(product.expiryDate) <= sevenDaysLater
     );
-    expiredItems.forEach((product) => {
-      toast.error(`❌ Expired: ${product.name} expired on ${new Date(product.expiryDate).toDateString()}!`);
-    });
+  
+    setExpiringSoonAlerts(expiringItems);
+  };
+  
+
+  const handleRestock = (product) => {
+    navigate("/purchase", { state: { productId: product.id } });
   };
 
-  // ✅ Transform transaction data for the chart
   const transformTransactionData = (transactions, month, year) => {
     const dailyData = {};
     const daysInMonth = new Date(year, month, 0).getDate();
@@ -82,6 +84,7 @@ const DashboardPage = () => {
     }
 
     transactions.forEach((transaction) => {
+      if (!transaction.createdAt) return; // ✅ Prevents crash if createdAt is missing
       const transactionDate = new Date(transaction.createdAt);
       if (transactionDate.getMonth() + 1 === month && transactionDate.getFullYear() === year) {
         const day = transactionDate.getDate();
@@ -94,11 +97,63 @@ const DashboardPage = () => {
     return Object.values(dailyData);
   };
 
+  // ✅ Prepare Data for Recharts
+  const chartData = [
+    { name: "Low Stock", count: lowStockAlerts.length },
+    { name: "Expiring Soon", count: expiringSoonAlerts.length },
+  ];
+
   return (
     <Layout>
       <div className="dashboard-page">
-
         <div className="dashboard-content">
+          <div className="alert-section">
+            <h3>⚠️ Low Stock Alerts</h3>
+            {lowStockAlerts.length > 0 ? (
+              lowStockAlerts.map((product) => (
+                <div key={product.id} className="alert-card">
+                  <span>
+                    {product.name} - {product.stockQuantity} left
+                  </span>
+                  <button onClick={() => handleRestock(product)}>Restock</button>
+                </div>
+              ))
+            ) : (
+              <p>No low stock items.</p>
+            )}
+          </div>
+
+          <div className="alert-section">
+            <h3>⏳ Expiring Soon</h3>
+            {expiringSoonAlerts.length > 0 ? (
+              expiringSoonAlerts.map((product) => (
+                <div key={product.id} className="alert-card expiring">
+                  <span>
+                    {product.name} - Expires on{" "}
+                    {new Date(product.expiryDate).toDateString()}
+                  </span>
+                </div>
+              ))
+            ) : (
+              <p>No expiring soon items.</p>
+            )}
+          </div>
+
+          {/* Recharts Visualization */}
+        <div className="chart-container">
+          <h3>📊 Inventory Overview</h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={chartData}>
+              <XAxis dataKey="name" />
+              <YAxis allowDecimals={false} />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="count" fill="#FF5733" barSize={60} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+        </div>
+
           <div className="filter-section">
             <label htmlFor="month-select">Select Month:</label>
             <select
@@ -130,14 +185,13 @@ const DashboardPage = () => {
             </select>
           </div>
 
-          {/* Display the chart */}
           <div className="chart-section">
             <div className="chart-container">
               <h3>Daily Transactions</h3>
               <ResponsiveContainer width="100%" height={400}>
                 <LineChart data={transactionData}>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="day" label={{ value: "Day", position: "insideBottomRight", offset: -5 }} />
+                  <XAxis dataKey="day" />
                   <YAxis />
                   <Tooltip />
                   <Legend />
@@ -148,13 +202,11 @@ const DashboardPage = () => {
           </div>
 
           <div className="button-group">
-            <br /><br />
-          <button onClick={() => setSelectedData("count")}>Order Volume</button>
-          <button onClick={() => setSelectedData("quantity")}>Inventory Levels</button>
-          <button onClick={() => setSelectedData("amount")}>Sales Summary</button>
+            <button onClick={() => setSelectedData("count")}>Order Volume</button>
+            <button onClick={() => setSelectedData("quantity")}>Inventory Levels</button>
+            <button onClick={() => setSelectedData("amount")}>Sales Summary</button>
+          </div>
         </div>
-        </div>
-      </div>
     </Layout>
   );
 };

@@ -56,7 +56,7 @@ const SellPage = () => {
     setQuantity("");
   };
 
-  //metjhod to show message or errors
+  //method to show message or errors
   const showMessage = (msg) => {
     setMessage(msg);
     setTimeout(() => {
