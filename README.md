@@ -17,7 +17,7 @@ This repository contains:
 2️. Project - Capstone Project 1
 🚀 Inventory Management System for Pantry
 
-- Developed using Spring Boot (Backend) and HTML, CSS, JavaScript (Frontend).
+- Developed using Spring Boot (Backend) and React (Frontend).
 
 - Implements authentication & authorization, CRUD operations, and database integration.
 
