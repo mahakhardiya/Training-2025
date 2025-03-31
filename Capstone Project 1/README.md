@@ -16,7 +16,7 @@ The Smart Inventory Management System is a web-based solution designed to stream
 ### **Frontend** (In Progress 🚧)  
 - **React (with hooks & context API)** – User interface  
 - **Axios** – Consuming backend services  
-- **CSS (Custom Theme: Beige & Coffee ☕🍪)** – Styling and responsiveness  
+- **CSS** – Styling and responsiveness  
 
 ---
 
