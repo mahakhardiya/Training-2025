@@ -5,18 +5,20 @@ The Smart Inventory Management System is a web-based solution designed to stream
 
 ---
 
-## 🛠️ Tech Stack  
+## **🛠️ Tech Stack**
+### **Backend (Spring Boot)**
+- **Spring Boot** (REST API)
+- **Spring Security** (JWT authentication)
+- **Spring Data JPA** (Hibernate)
+- **PostgreSQL** (Database)
+- **Maven** (Dependency Management)
 
-### **Backend** (Completed ✅)  
-- **Spring Boot** – RESTful APIs for managing inventory  
-- **Spring Security** – User authentication & authorization  
-- **PostgreSQL** – Database for storing inventory data  
-- **JWT (JSON Web Token)** – Secure authentication  
-
-### **Frontend** (In Progress 🚧)  
-- **React (with hooks & context API)** – User interface  
-- **Axios** – Consuming backend services  
-- **CSS** – Styling and responsiveness  
+### **Frontend (React)**
+- **React.js** (Component-based UI)
+- **React Router** (Navigation)
+- **Recharts** (Data Visualization)
+- **Toastify** (Notifications)
+- **CSS Modules** (Styling)
 
 ---
 
