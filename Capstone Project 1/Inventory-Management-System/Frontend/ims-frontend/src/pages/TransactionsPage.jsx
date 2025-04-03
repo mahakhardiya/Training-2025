@@ -21,20 +21,27 @@ const TransactionsPage = () => {
     const getTransactions = async () => {
       try {
         const transactionData = await ApiService.getAllTransactions(valueToSearch);
+        console.log("API Response:", transactionData); // ✅ Debugging log
 
         if (transactionData.status === 200) {
-          setTotalPages(Math.ceil(transactionData.transactions.length / itemsPerPage));
+          const transactionsList = transactionData.transactions.map(transaction => ({
+            ...transaction,
+            productNames: transaction.productName ? transaction.productName : "No products",
+            productPrice: transaction.productPrice !== undefined ? `₹${transaction.productPrice}` : "N/A"
+          }));
+
+          console.log("Processed Transactions:", transactionsList); // ✅ Check if productPrice is included
+
+          setTotalPages(Math.ceil(transactionsList.length / itemsPerPage));
           setTransactions(
-            transactionData.transactions.slice(
+            transactionsList.slice(
               (currentPage - 1) * itemsPerPage,
               currentPage * itemsPerPage
             )
           );
         }
       } catch (error) {
-        showMessage(
-          error.response?.data?.message || "Error Getting transactions: " + error
-        );
+        console.error("Error Getting transactions:", error);
       }
     };
 
@@ -63,21 +70,19 @@ const TransactionsPage = () => {
   // Function to download transactions as CSV
   const downloadCSV = async () => {
     try {
-      // Fetch all transactions (without pagination)
       const transactionData = await ApiService.getAllTransactions("");
 
       if (transactionData.status === 200) {
         const transactions = transactionData.transactions;
 
-        // Define CSV header
-        let csvContent = "TYPE,STATUS,TOTAL PRICE,TOTAL PRODUCTS,DATE\n";
+        let csvContent = "PRODUCT, PRICE, TYPE, STATUS, TOTAL PRODUCTS, TOTAL PRICE, DATE\n";
 
-        // Append each transaction row
         transactions.forEach((transaction) => {
-          csvContent += `${transaction.transactionType},${transaction.status},${transaction.totalPrice},${transaction.totalProducts},${new Date(transaction.createdAt).toLocaleString()}\n`;
+          const productNames = transaction.productName || "No products";
+          const productPrice = transaction.productPrice !== undefined ? transaction.productPrice : "N/A";
+          csvContent += `"${productNames}", "${productPrice}", ${transaction.transactionType},${transaction.status},${transaction.totalProducts},${transaction.totalPrice},${new Date(transaction.createdAt).toLocaleString()}\n`;
         });
 
-        // Create a Blob and trigger download
         const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
@@ -97,11 +102,9 @@ const TransactionsPage = () => {
       {message && <p className="message">{message}</p>}
 
       <div className="transactions-page">
-        {/* Transactions Header */}
         <div className="transactions-header">
           <h1>Transactions</h1>
           <div className="transaction-actions">
-            {/* Search Bar */}
             <div className="transaction-search">
               <input
                 placeholder="Search transaction ..."
@@ -111,20 +114,20 @@ const TransactionsPage = () => {
               />
               <button onClick={handleSearch}>🔍 Search</button>
             </div>
-            {/* CSV Download Button */}
             <button onClick={downloadCSV}>📥 Download CSV</button>
           </div>
         </div>
 
-        {/* Transactions Table */}
         {transactions.length > 0 ? (
           <table className="transactions-table">
             <thead>
               <tr>
+                <th>PRODUCT</th>
+                <th>PRICE</th>
                 <th>TYPE</th>
                 <th>STATUS</th>
-                <th>TOTAL PRICE</th>
                 <th>TOTAL PRODUCTS</th>
+                <th>TOTAL PRICE</th>
                 <th>DATE</th>
                 <th>ACTIONS</th>
               </tr>
@@ -132,10 +135,12 @@ const TransactionsPage = () => {
             <tbody>
               {transactions.map((transaction) => (
                 <tr key={transaction.id}>
+                  <td>{transaction.productNames}</td>
+                  <td className="product-price">{transaction.productPrice}</td>
                   <td>{transaction.transactionType}</td>
                   <td>{transaction.status}</td>
-                  <td>{transaction.totalPrice}</td>
                   <td>{transaction.totalProducts}</td>
+                  <td>{transaction.totalPrice}</td>
                   <td>{new Date(transaction.createdAt).toLocaleString()}</td>
                   <td>
                     <button onClick={() => navigateToTransactionDetailsPage(transaction.id)}>
@@ -151,7 +156,6 @@ const TransactionsPage = () => {
         )}
       </div>
 
-      {/* Pagination Component */}
       <PaginationComponent
         currentPage={currentPage}
         totalPages={totalPages}
