@@ -164,10 +164,9 @@ public class TransactionServiceImpl implements TransactionService {
 
         @Override
         public Response getAllTransactions(int page, int size, String filter) {
-
                 Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id"));
 
-                // user the Transaction specification
+                // Use the Transaction specification
                 Specification<Transaction> spec = TransactionFilter.byFilter(filter);
                 Page<Transaction> transactionPage = transactionRepository.findAll(spec, pageable);
 
@@ -176,9 +175,19 @@ public class TransactionServiceImpl implements TransactionService {
                                 }.getType());
 
                 transactionDTOS.forEach(transactionDTO -> {
+                        if (transactionDTO.getProduct() != null) {
+                                transactionDTO.setProductName(transactionDTO.getProduct().getName());
+                                transactionDTO.setProductPrice(transactionDTO.getProduct().getPrice()); // ✅ BigDecimal
+                                                                                                        // remains
+                        } else {
+                                transactionDTO.setProductName("N/A");
+                                transactionDTO.setProductPrice(BigDecimal.ZERO); // ✅ Use BigDecimal.ZERO instead of 0.0
+                        }
+
                         transactionDTO.setUser(null);
                         transactionDTO.setProduct(null);
                         transactionDTO.setSupplier(null);
+
                 });
 
                 return Response.builder()
@@ -188,7 +197,6 @@ public class TransactionServiceImpl implements TransactionService {
                                 .totalElements(transactionPage.getTotalElements())
                                 .totalPages(transactionPage.getTotalPages())
                                 .build();
-
         }
 
         @Override
@@ -198,6 +206,11 @@ public class TransactionServiceImpl implements TransactionService {
                                 .orElseThrow(() -> new NotFoundException("Transaction Not Found"));
 
                 TransactionDTO transactionDTO = modelMapper.map(transaction, TransactionDTO.class);
+
+                transactionDTO.setProductName(
+                                transaction.getProduct() != null ? transaction.getProduct().getName() : "N/A"); // ✅ Add
+                                                                                                                // Product
+                                                                                                                // Name
 
                 transactionDTO.getUser().setTransactions(null);
 

@@ -34,9 +34,22 @@ public class TransactionDTO {
     private LocalDateTime createdAt;
     private LocalDateTime updateAt;
 
+    private String productName; // New field for product name
+
+    private BigDecimal productPrice;// ✅ Add productPrice
+
+    public BigDecimal getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(BigDecimal productPrice) {
+        this.productPrice = productPrice;
+    }
+
     private ProductDTO product;
 
     private UserDTO user;
 
     private SupplierDTO supplier;
+
 }
