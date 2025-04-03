@@ -140,7 +140,7 @@ const DashboardPage = () => {
           </div>
 
           {/* Recharts Visualization */}
-        <div className="chart-container">
+        <div className="chart-container-2">
           <h3>📊 Inventory Overview</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={chartData}>
