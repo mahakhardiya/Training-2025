@@ -1,5 +1,7 @@
 package com.sims.service;
 
+import java.time.LocalDate;
+
 import com.sims.dto.Response;
 import com.sims.dto.TransactionRequest;
 import com.sims.enums.TransactionStatus;
@@ -16,6 +18,8 @@ public interface TransactionService {
     Response getAllTransactionById(Long id);
 
     Response getAllTransactionByMonthAndYear(int month, int year);
+
+    Response getAllTransactionByDate(LocalDate date);
 
     Response updateTransactionStatus(Long transactionId, TransactionStatus status);
 }

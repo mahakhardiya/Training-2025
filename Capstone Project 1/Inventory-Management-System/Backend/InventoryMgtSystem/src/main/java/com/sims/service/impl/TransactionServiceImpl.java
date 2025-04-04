@@ -30,6 +30,7 @@ import com.sims.service.UserService;
 import com.sims.specification.TransactionFilter;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -225,6 +226,28 @@ public class TransactionServiceImpl implements TransactionService {
         public Response getAllTransactionByMonthAndYear(int month, int year) {
                 List<Transaction> transactions = transactionRepository
                                 .findAll(TransactionFilter.byMonthAndYear(month, year));
+
+                List<TransactionDTO> transactionDTOS = modelMapper.map(transactions,
+                                new TypeToken<List<TransactionDTO>>() {
+                                }.getType());
+
+                transactionDTOS.forEach(transactionDTO -> {
+                        transactionDTO.setUser(null);
+                        transactionDTO.setProduct(null);
+                        transactionDTO.setSupplier(null);
+                });
+
+                return Response.builder()
+                                .status(200)
+                                .message("success")
+                                .transactions(transactionDTOS)
+                                .build();
+        }
+
+        @Override
+        public Response getAllTransactionByDate(LocalDate date) {
+                List<Transaction> transactions = transactionRepository
+                                .findAll(TransactionFilter.byExactDate(date));
 
                 List<TransactionDTO> transactionDTOS = modelMapper.map(transactions,
                                 new TypeToken<List<TransactionDTO>>() {

@@ -109,7 +109,7 @@ const Header = () => {
 
         <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
           {isAuth && <li><Link to="/dashboard">Dashboard</Link></li>}
-          {isAuth && <li><Link to="/transaction">Transactions</Link></li>}
+          {isAuth && <li><Link to="/transaction">Reports</Link></li>}
           {isAdmin && <li><Link to="/category">Categories</Link></li>}
           {isAdmin && <li><Link to="/product">Products</Link></li>}
           {isAdmin && <li><Link to="/supplier">Suppliers</Link></li>}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Layout from "../component/Layout";
 import ApiService from "../service/ApiService";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ const TransactionsPage = () => {
   const [message, setMessage] = useState("");
   const [filter, setFilter] = useState("");
   const [valueToSearch, setValueToSearch] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
 
   const navigate = useNavigate();
 
@@ -17,60 +18,65 @@ const TransactionsPage = () => {
   const [totalPages, setTotalPages] = useState(0);
   const itemsPerPage = 10;
 
-  useEffect(() => {
-    const getTransactions = async () => {
-      try {
-        const transactionData = await ApiService.getAllTransactions(valueToSearch);
-        console.log("API Response:", transactionData); // ✅ Debugging log
-
-        if (transactionData.status === 200) {
-          const transactionsList = transactionData.transactions.map(transaction => ({
-            ...transaction,
-            productNames: transaction.productName ? transaction.productName : "No products",
-            productPrice: transaction.productPrice !== undefined ? `₹${transaction.productPrice}` : "N/A"
-          }));
-
-          console.log("Processed Transactions:", transactionsList); // ✅ Check if productPrice is included
-
-          setTotalPages(Math.ceil(transactionsList.length / itemsPerPage));
-          setTransactions(
-            transactionsList.slice(
-              (currentPage - 1) * itemsPerPage,
-              currentPage * itemsPerPage
-            )
-          );
-        }
-      } catch (error) {
-        console.error("Error Getting transactions:", error);
-      }
-    };
-
-    getTransactions();
-  }, [currentPage, valueToSearch]);
-
-  // Method to show message or errors
   const showMessage = (msg) => {
     setMessage(msg);
-    setTimeout(() => {
-      setMessage("");
-    }, 4000);
+    setTimeout(() => setMessage(""), 4000);
   };
 
-  // Handle search
+  const fetchTransactions = useCallback(async () => {
+    try {
+      let response;
+      if (selectedDate) {
+        response = await ApiService.getTransactionsByDate(selectedDate);
+      } else {
+        response = await ApiService.getAllTransactions(valueToSearch);
+      }
+
+      if (response.status === 200) {
+        const transactionsList = response.transactions.map((transaction) => ({
+          ...transaction,
+          productNames: transaction.productName || "No products",
+          productPrice:
+            transaction.productPrice !== undefined
+              ? `₹${transaction.productPrice}`
+              : "N/A",
+        }));
+
+        setTotalPages(Math.ceil(transactionsList.length / itemsPerPage));
+        setTransactions(
+          transactionsList.slice(
+            (currentPage - 1) * itemsPerPage,
+            currentPage * itemsPerPage
+          )
+        );
+      }
+    } catch (error) {
+      console.error("Error getting transactions:", error);
+    }
+  }, [valueToSearch, selectedDate, currentPage]);
+
+  useEffect(() => {
+    fetchTransactions();
+  }, [fetchTransactions]);
+
   const handleSearch = () => {
     setCurrentPage(1);
     setValueToSearch(filter);
   };
 
-  // Navigate to transactions details page
   const navigateToTransactionDetailsPage = (transactionId) => {
     navigate(`/transaction/${transactionId}`);
   };
 
-  // Function to download transactions as CSV
   const downloadCSV = async () => {
     try {
-      const transactionData = await ApiService.getAllTransactions("");
+      let transactionData;
+
+      if (selectedDate) {
+        transactionData = await ApiService.getTransactionsByDate(selectedDate);
+      } else {
+        transactionData = await ApiService.getAllTransactions("");
+      }
 
       if (transactionData.status === 200) {
         const transactions = transactionData.transactions;
@@ -80,14 +86,14 @@ const TransactionsPage = () => {
         transactions.forEach((transaction) => {
           const productNames = transaction.productName || "No products";
           const productPrice = transaction.productPrice !== undefined ? transaction.productPrice : "N/A";
-          csvContent += `"${productNames}", "${productPrice}", ${transaction.transactionType},${transaction.status},${transaction.totalProducts},${transaction.totalPrice},${new Date(transaction.createdAt).toLocaleString()}\n`;
+          csvContent += `"${productNames}", "${productPrice}", ${transaction.transactionType}, ${transaction.status}, ${transaction.totalProducts}, ${transaction.totalPrice}, ${new Date(transaction.createdAt).toLocaleString()}\n`;
         });
 
         const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
-        link.setAttribute("download", `transactions_${new Date().toISOString().slice(0, 10)}.csv`);
+        link.setAttribute("download", `transactions_${selectedDate || "all"}.csv`);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -104,7 +110,19 @@ const TransactionsPage = () => {
       <div className="transactions-page">
         <div className="transactions-header">
           <h1>Transactions</h1>
+
           <div className="transaction-actions">
+            <div className="transaction-date-filter">
+              <input
+                type="date"
+                value={selectedDate}
+                onChange={(e) => {
+                  setSelectedDate(e.target.value);
+                  setCurrentPage(1);
+                }}
+              />
+            </div>
+
             <div className="transaction-search">
               <input
                 placeholder="Search transaction ..."
@@ -114,7 +132,8 @@ const TransactionsPage = () => {
               />
               <button onClick={handleSearch}>🔍 Search</button>
             </div>
-            <button onClick={downloadCSV}>📥 Download CSV</button>
+
+            <button onClick={downloadCSV}>📥CSV</button>
           </div>
         </div>
 
@@ -141,9 +160,15 @@ const TransactionsPage = () => {
                   <td>{transaction.status}</td>
                   <td>{transaction.totalProducts}</td>
                   <td>{transaction.totalPrice}</td>
-                  <td>{new Date(transaction.createdAt).toLocaleString()}</td>
                   <td>
-                    <button onClick={() => navigateToTransactionDetailsPage(transaction.id)}>
+                    {new Date(transaction.createdAt).toLocaleString()}
+                  </td>
+                  <td>
+                    <button
+                      onClick={() =>
+                        navigateToTransactionDetailsPage(transaction.id)
+                      }
+                    >
                       View Details
                     </button>
                   </td>

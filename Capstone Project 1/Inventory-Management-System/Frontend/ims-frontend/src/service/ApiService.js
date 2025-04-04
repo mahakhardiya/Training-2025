@@ -288,6 +288,16 @@ export default class ApiService {
         return response.data;
     }
 
+    static async getTransactionsByDate(date){
+        const response = await axios.get(`${this.BASE_URL}/transactions/by-date`, {
+            headers: this.getHeader(),
+            params: {
+                date: date
+            }
+        })
+        return response.data;
+    }
+
     static async geTransactionsByMonthAndYear(month, year) {
         const response = await axios.get(`${this.BASE_URL}/transactions/by-month-year`, {
             headers: this.getHeader(),

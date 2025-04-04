@@ -1132,7 +1132,7 @@ button[type="submit"]:hover {
 
 /* TRANSACTION PAGE STYLING - Café Pantry ☕🍪 */
 
-/* Transactions Page Styles */
+/* Transactions Page */
 .transactions-page {
   padding: 20px;
 }
@@ -1145,63 +1145,151 @@ button[type="submit"]:hover {
   margin-bottom: 15px;
 }
 
-/* Search and CSV Container */
-/* Search & Action Buttons Container */
-.transaction-actions {
+/* Filters & Actions */
+.transaction-actions-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  flex-wrap: wrap;
   margin-bottom: 15px;
 }
 
-/* Search Bar */
-.transaction-search {
+/* Date Filter (Left-Aligned) */
+.transaction-date-filter {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #FAF3E0;
-  border: 2px solid #2C2C2C;
-  border-radius: 8px;
+}
+
+.transaction-date-filter input {
   padding: 8px 12px;
+  border: 1px solid #B58E6A;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.transaction-date-filter input:hover,
+.transaction-date-filter input:focus {
+  border-color: #8B6F47;
+  outline: none;
+}
+
+/* Right-Aligned Actions (Search + Buttons) */
+.transaction-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Fix Search Bar Alignment */
+
+
+.transaction-search {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #8B6F47;
+  border-radius: 8px;
+  padding: 6px 10px;
+  background: white;
 }
 
 .transaction-search input {
+  flex: 1;  /* Takes up all available space */
   border: none;
   background: transparent;
-  font-size: 16px;
-  width: 200px;
+  font-size: 14px;
   outline: none;
 }
+
+.transaction-search .new-style {
+  background: #DAB894;  /* Matching button color */
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-left: auto; /* Pushes the button to the right */
+}
+
 
 .transaction-search input::placeholder {
   color: #8B6F47;
   font-size: 14px;
 }
 
-/* Search & Download Buttons */
+/* Fix Search Button Inside Input */
+.transaction-search button {
+  background: transparent; /* Ensure full transparency */
+  border: none; /* Remove any borders */
+  outline: none; /* Prevent focus outline */
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  box-shadow: none; /* Remove any unwanted shadows */
+}
+
+/* Fix Search Icon */
+.transaction-search button i {
+  font-size: 16px;
+  color: #8B6F47;
+  margin: 0;
+}
+
+/* Standardized Button Style */
 .transaction-actions button {
-  background-color: #2C2C2C;
-  border: none;
-  padding: 10px 16px;
+  background: #E4C9A1;
+  color: #2C2C2C;
   font-size: 14px;
-  color: white;
   font-weight: bold;
+  padding: 10px 16px; /* Ensure uniform padding */
   border-radius: 6px;
+  border: 1px solid #8B6F47;
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  transition: background 0.3s ease, transform 0.2s ease;
+  min-height: 40px; /* Consistent button height */
+  min-width: 120px; /* Ensures equal width */
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
+/* Hover Effect */
 .transaction-actions button:hover {
-  background-color: #B58E6A;
-  transform: translateY(-2px);
+  background-color: #2C2C2C;
+  color: white;
 }
 
-.transaction-actions button i {
-  font-size: 16px;
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .transaction-actions-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .transaction-date-filter {
+    justify-content: flex-start;
+  }
+
+  .transaction-actions {
+    justify-content: flex-end;
+  }
+
+  .transaction-search {
+    width: 100%;
+  }
+
+  .transaction-actions button {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 /* Table Styling */
