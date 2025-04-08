@@ -34,7 +34,7 @@ const ProfilePage = () => {
       <div className="profile-page">
         {user && (
           <div className="profile-card">
-            <h1>Hello, {user.role}</h1>
+            <h1>Hello, {user.name}</h1>
             <div className="profile-info">
               <div className="profile-item">
                 <label>Name</label>

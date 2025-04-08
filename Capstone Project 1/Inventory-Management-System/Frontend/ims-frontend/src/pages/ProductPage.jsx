@@ -83,7 +83,7 @@ const ProductPage = () => {
 
       <div className="product-page">
         <div className="product-header">
-          <h1>Products</h1>
+          <h1>List of Available Products</h1>
           <button
             className="add-product-btn"
             onClick={() => navigate("/add-product")}

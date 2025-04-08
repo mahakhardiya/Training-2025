@@ -1,5 +1,6 @@
 import React from "react";
-import Header from "./HomeHeader"; 
+import Header from "./HomeHeader";
+import Footer from "./Footer";
 
 const HomePageLayout = ({ children }) => {
     return (
@@ -8,6 +9,7 @@ const HomePageLayout = ({ children }) => {
             <div className="main-content">
                 {children}
             </div>
+            <Footer />
         </div>
     );
 };

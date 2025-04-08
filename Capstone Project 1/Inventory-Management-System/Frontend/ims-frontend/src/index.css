@@ -243,7 +243,7 @@ button[type="submit"]:hover {
 .auth-container p {
   font-size: 14px;
   margin-top: 15px;
-  color: #D4A373;
+  color: #5A3E30;
 }
 
 .auth-container a {
@@ -318,7 +318,40 @@ button[type="submit"]:hover {
   border: 2px solid #D4A373;
 }
 
+.footer {
+  background-color: #2C2C2C;
+  color: #D4A373;
+  text-align: center;
+  padding: 25px 15px;
+  margin-top: 50px;
+  border-top: 1px solid #444;
+  position: relative;
+  width: 100%;
+}
 
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  font-size: 22px;
+  margin: 0;
+  font-weight: bold;
+  color: #D4A373;
+}
+
+.footer-tagline {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #E4C9A1;
+}
+
+.footer-copy {
+  font-size: 13px;
+  margin-top: 10px;
+  color: #D4A373;
+}
 
 
 
@@ -488,28 +521,27 @@ button[type="submit"]:hover {
 
 
 
-/* Layout STYLING */
+/* Ensures the layout covers full height of the screen */
 .layout {
   display: flex;
-  flex-direction: column; /* Ensures the header is at the top */
-  overflow: hidden;
-  transition: all 0.3s ease-in-out;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Adjust main content to avoid overlap with the fixed header */
+/* Makes space for fixed header */
 .main-content {
-  padding: 20px;
-  margin-top: 70px; /* Adjust according to the header height */
-  flex-grow: 1;
-  transition: margin-top 0.3s ease;
+  flex: 1;
+  padding-top: 80px; /* adjust if your header height changes */
+  padding-bottom: 40px; /* to make space for the footer */
 }
+
 
 
 
 /* CATEGORY PAGE */
 
 .bod-yy{
-  background-color: bisque;
+  background-color: linear-gradient(to right, #f9f3e9, #fdfbf6);
 } 
 
 .category-page {
@@ -808,7 +840,7 @@ button[type="submit"]:hover {
 /* PRODUCT STYLING */
 .product-page {
   padding: 20px;
-  background-color: #F5F5DC; /* Off-White Background */
+  background-color: linear-gradient(to right, #f9f3e9, #fdfbf6); /* Off-White Background */
 }
 
 .product-header {
@@ -816,6 +848,7 @@ button[type="submit"]:hover {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  margin-left: 1rem;
 }
 
 .product-header h1 {
@@ -1368,7 +1401,7 @@ button[type="submit"]:hover {
 }
 
 .pagination .active {
-  background-color: #D4A373;
+  background-color: #5A3E30;
   color: white;
 }
 
@@ -1601,84 +1634,119 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding: 20px;
-  background: #F5F5DC; /* Off-White Background */
+  min-height: calc(100vh - 120px); /* Adjust for header + footer */
+  background: linear-gradient(to right, #f9f3e9, #fdfbf6);
+  padding: 40px 20px;
+  box-sizing: border-box;
 }
 
 /* Profile Card */
 .profile-card {
-  background: #FAF3E0; /* Soft Creamy Mocha */
-  border-radius: 15px;
-  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2);
-  padding: 40px;
-  width: 30%;
+  background: #fffaf3;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 450px;
   text-align: center;
-  transition: transform 0.3s ease-in-out;
-  border: 2px solid #2C2C2C; /* Warm Beige Border */
+  border: 1px solid #e0d6c9;
+  animation: fadeIn 0.8s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Hover Effect */
-.profile-card:hover {
-  transform: scale(1.03);
-  box-shadow: 8px 12px 20px rgba(0, 0, 0, 0.25);
-}
-
-/* Profile Heading */
+/* Heading */
 .profile-card h1 {
   font-size: 2rem;
-  color: #5A3E30;  
-  margin-bottom: 30px;
-  animation: fadeIn 1s ease-in-out;
+  color: #3e2f23;
+  margin-bottom: 25px;
+  font-weight: 600;
   text-transform: capitalize;
-  font-weight: bold;
 }
 
-/* Profile Info Section */
+/* Profile Info */
 .profile-info {
+  background: #fdf6ee;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.6); /* Light Transparent Layer */
-  border-radius: 10px;
-  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
 }
 
-/* Individual Profile Items */
+/* Profile Items */
 .profile-item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 12px 0;
-  font-size: 18px;
-  color: #5C4033; /* Deep Coffee */
-  border-bottom: 1px solid #2C2C2C; /* Warm Beige */
-  transition: color 0.3s ease;
+  border-bottom: 1px solid #ddd0c2;
+  font-size: 16px;
+  color: #4e342e;
 }
 
-/* Labels */
 .profile-item label {
   font-weight: bold;
-  color: #5A3E30;  
+  color: #5d4037;
 }
 
-/* Data Text */
 .profile-item span {
-  color: #6D4C41; /* Coffee Brown */
+  color: #6d4c41;
+  font-weight: 500;
 }
 
-/* Hover Effect for Profile Items */
+/* Hover Effect */
 .profile-item:hover {
-  color: #D4A373;
-  background: rgba(62, 39, 35, 0.1);
+  background-color: rgba(244, 224, 200, 0.2);
+  border-radius: 8px;
 }
 
-/* Subtle Animations */
+/* Error Message */
+.message {
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffdddd;
+  color: #7b1f1f;
+  padding: 12px 20px;
+  border: 1px solid #e57373;
+  border-radius: 8px;
+  z-index: 999;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-15px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-card {
+    padding: 30px 20px;
+  }
+
+  .profile-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .profile-item label {
+    font-size: 14px;
+  }
+
+  .profile-item span {
+    font-size: 15px;
   }
 }
 

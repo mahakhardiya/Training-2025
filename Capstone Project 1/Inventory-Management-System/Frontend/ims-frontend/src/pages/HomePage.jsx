@@ -22,7 +22,7 @@ const HomePage = () => {
             <p className="hero-subtitle">
              Keep Your Shelves Stocked and Your Business Running Smoothly with Intelligent Pantry Management
             </p>
-            <button onClick={() => navigate("/dashboard")} className="btn">
+            <button onClick={() => navigate("/login")} className="btn">
               Get Started
             </button>
           </div>
