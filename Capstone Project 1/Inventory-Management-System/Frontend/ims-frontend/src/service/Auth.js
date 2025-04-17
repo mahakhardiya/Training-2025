@@ -13,8 +13,11 @@ export const ProtectedRoute = ({element: Component}) => {
 };
 
 export const AdminRoute = ({element:Component}) => {
+    const isAuthenticated = ApiService.isAuthenticated();
+    const isAdmin = ApiService.isAdmin();
+
     const location = useLocation();
-    return ApiService.isAdmin() ? (
+    return isAuthenticated && isAdmin ? (
         Component
     ):(
         <Navigate to="/login" replace state={{from: location}}/>
