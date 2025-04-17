@@ -117,7 +117,7 @@ const ProductPage = () => {
                     <p className="price">Price: ₹{product.price}</p>
                     <p className="quantity">Quantity: {product.stockQuantity}</p>
                     {product.expiryDate && (
-                      <p className="expiry-date">Expiry: {product.expiryDate}</p>
+                      <p className="expiry-date">Expiry: {new Date(product.expiryDate).toDateString()}</p>
                     )}
                   </div>
 
