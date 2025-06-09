@@ -25,7 +25,7 @@ class User(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
-    # We will add refresh_token here later as requested
+    refresh_token: str 
 
 class TokenData(BaseModel):
     email: str | None = None

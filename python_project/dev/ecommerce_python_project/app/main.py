@@ -16,7 +16,7 @@ if project_root not in sys.path:
 from . import models
 # --- END OF THE FIX ---
 
-
+from .admin.routes import router as admin_router
 from fastapi import FastAPI
 from .auth.routes import router as auth_router
 from .products.routes import router as product_router
@@ -30,6 +30,7 @@ app.include_router(auth_router)
 app.include_router(product_router)
 app.include_router(order_router)
 app.include_router(cart_router)
+app.include_router(admin_router)
 
 @app.get("/")
 def read_root():

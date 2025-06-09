@@ -2,7 +2,9 @@
 
 from sqlalchemy.orm import Session
 from . import models, schemas
-from .utils import get_password_hash
+#from .utils import get_password_hash
+
+from .hashing import get_password_hash 
 
 def get_user_by_email(db: Session, email: str):
     """Fetches a user by their email address."""

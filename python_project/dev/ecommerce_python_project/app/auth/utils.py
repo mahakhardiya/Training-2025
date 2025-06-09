@@ -19,31 +19,30 @@ from . import crud, models, schemas
 # The tokenUrl is the path to our login endpoint.
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/signin")
 
-# We are telling passlib to use bcrypt as the default hashing algorithm.
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
-def verify_password(plain_password: str, hashed_password: str) -> bool:
-    """Verifies a plain password against its hashed version."""
-    return pwd_context.verify(plain_password, hashed_password)
-
-def get_password_hash(password: str) -> str:
-    """Hashes a plain password."""
-    return pwd_context.hash(password)
-
 def create_access_token(data: dict, expires_delta: timedelta | None = None):
     to_encode = data.copy()
     if expires_delta:
         expire = datetime.now(timezone.utc) + expires_delta
     else:
-        # Default to 15 minutes if not provided
         expire = datetime.now(timezone.utc) + timedelta(minutes=15)
     
-    to_encode.update({"exp": expire})
+    to_encode.update({"exp": expire, "scope": "access_token"}) # <-- ADD SCOPE
     encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
     return encoded_jwt
 
-# app/auth/utils.py
-# ... (at the end of the file)
+# --- NEW FUNCTION ---
+def create_refresh_token(data: dict, expires_delta: timedelta | None = None):
+    to_encode = data.copy()
+    if expires_delta:
+        expire = datetime.now(timezone.utc) + expires_delta
+    else:
+        # Default to 7 days if not provided
+        expire = datetime.now(timezone.utc) + timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS)
+    
+    to_encode.update({"exp": expire, "scope": "refresh_token"}) # <-- ADD SCOPE
+    # Use the REFRESH_SECRET_KEY for signing
+    encoded_jwt = jwt.encode(to_encode, settings.REFRESH_SECRET_KEY, algorithm=settings.ALGORITHM)
+    return encoded_jwt
 
 def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
     credentials_exception = HTTPException(
@@ -53,6 +52,12 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     )
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+        
+        # --- SCOPE CHECK ---
+        if payload.get("scope") != "access_token":
+            raise credentials_exception
+        # -------------------
+
         email: str = payload.get("sub") # type: ignore
         if email is None:
             raise credentials_exception
