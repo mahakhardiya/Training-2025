@@ -1,59 +1,56 @@
 # app/orders/crud.py
-
 from sqlalchemy.orm import Session
-from . import models, schemas
+from . import models
 from ..auth.models import User
-from ..cart.models import Cart
+from ..cart.models import CartItem as CartModel # Import the cart model
 from ..products.models import Product
 
-def create_order_from_cart(db: Session, user: User, cart: Cart):
-    """Creates an order from the user's cart and then clears the cart."""
-    if not cart.items:
-        return None # Cannot create an empty order
+def create_order_from_cart(db: Session, user: User):
+    cart_items = db.query(CartModel).filter(CartModel.user_id == user.id).all()
+    if not cart_items:
+        return None 
 
-    # Create the main Order record
-    db_order = models.Order(owner=user)
+    total_amount = 0.0
+    for item in cart_items:
+        product = db.query(Product).filter(Product.id == item.product_id).first()
+        if product:
+            total_amount += product.price * item.quantity
+
+    # Create the main Order record with the calculated total
+    db_order = models.Order(
+        owner=user,
+        total_amount=total_amount
+    )
     db.add(db_order)
-    db.flush() # Use flush to get the db_order.id before the full commit
+    db.flush()
 
-    total_price = 0.0
-
-    # Create OrderItem records from CartItem records
-    for cart_item in cart.items:
+    # Create OrderItem records and check stock
+    for item in cart_items:
+        product = db.query(Product).filter(Product.id == item.product_id).first()
+        if not product or product.stock < item.quantity: # type: ignore
+            # In a real app, you'd raise an HTTPException here
+            # For simplicity, we'll just skip, but this is where stock check goes
+            db.rollback() # Important: undo the order creation
+            return "INSUFFICIENT_STOCK"
+        
         db_order_item = models.OrderItem(
             order_id=db_order.id,
-            product_id=cart_item.product_id,
-            quantity=cart_item.quantity
+            product_id=item.product_id,
+            quantity=item.quantity,
+            price_at_purchase=product.price # Save the current price
         )
         db.add(db_order_item)
         
-        # Calculate price for this item and add to total
-        product = db.query(Product).filter(Product.id == cart_item.product_id).first()
-        if product:
-            total_price += product.price * cart_item.quantity
+        # Decrement stock
+        product.stock -= item.quantity # type: ignore
+        db.add(product)
 
-    # Clear the cart items
-    for cart_item in cart.items:
-        db.delete(cart_item)
+    # Clear the cart items for this user
+    db.query(CartModel).filter(CartModel.user_id == user.id).delete()
 
-    db.commit() # Commit all changes (order, items, cart clearing)
-
-    # Manually add the calculated total_price to the SQLAlchemy object
-    # before it's passed to Pydantic for serialization.
-    db_order.total_price = total_price
-    
+    db.commit()
+    db.refresh(db_order)
     return db_order
 
-
 def get_user_orders(db: Session, user: User):
-    """Fetches all orders for a specific user."""
-    orders = db.query(models.Order).filter(models.Order.user_id == user.id).all()
-    
-    # Calculate total_price for each order
-    for order in orders:
-        total_price = 0.0
-        for item in order.items:
-            total_price += item.product.price * item.quantity
-        order.total_price = total_price
-        
-    return orders
+    return db.query(models.Order).filter(models.Order.user_id == user.id).order_by(models.Order.created_at.desc()).all()

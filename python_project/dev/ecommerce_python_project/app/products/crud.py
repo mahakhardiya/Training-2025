@@ -16,7 +16,12 @@ def create_product(db: Session, product: schemas.ProductCreate):
     db_product = models.Product(
         name=product.name,
         description=product.description,
-        price=product.price
+        price=product.price,
+        # --- NEW FIELDS ---
+        stock=product.stock,
+        category=product.category,
+        image_url=product.image_url
+        # ------------------
     )
     db.add(db_product)
     db.commit()

@@ -11,3 +11,7 @@ class Product(Base):
     name = Column(String, index=True, nullable=False)
     description = Column(String)
     price = Column(Float, nullable=False)
+
+    stock = Column(Integer, nullable=False, default=0)
+    category = Column(String, index=True)
+    image_url = Column(String, nullable=True)

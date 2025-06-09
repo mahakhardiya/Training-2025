@@ -7,6 +7,5 @@ from .core.database import Base
 from .auth.models import User
 from .products.models import Product
 from .orders.models import Order, OrderItem
-# app/models.py
-# ... (keep existing imports)
-from .cart.models import Cart, CartItem
+from .cart.models import CartItem # <-- Corrected line
+from .auth.password_reset_models import PasswordResetToken

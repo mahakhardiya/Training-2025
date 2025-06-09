@@ -2,26 +2,18 @@
 
 from pydantic import BaseModel, ConfigDict
 from typing import List
-from ..products.schemas import Product # Import the product schema
+from ..products.schemas import Product
 
-# Schema for an item in the cart, used for displaying
+# This schema now represents a single row in our 'cart' table.
 class CartItem(BaseModel):
     id: int
     product_id: int
     quantity: int
-    product: Product # Nest the full product details
+    product: Product
 
     model_config = ConfigDict(from_attributes=True)
 
-# Schema for the full cart, used for displaying
-class Cart(BaseModel):
-    id: int
-    user_id: int
-    items: List[CartItem] = [] # A list of CartItem schemas
-
-    model_config = ConfigDict(from_attributes=True)
-
-# Schema for adding an item to the cart
+# This schema is used for adding items
 class AddToCart(BaseModel):
     product_id: int
-    quantity: int = 1 # Default quantity to 1 if not provided
+    quantity: int = 1

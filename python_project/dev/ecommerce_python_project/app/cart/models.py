@@ -5,26 +5,15 @@ from sqlalchemy.orm import relationship
 
 from ..core.database import Base
 
-class Cart(Base):
-    __tablename__ = "carts"
-
-    id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id"), unique=True, nullable=False)
-
-    # A user has one cart
-    owner = relationship("User", back_populates="cart")
-    # A cart has many items
-    items = relationship("CartItem", back_populates="cart", cascade="all, delete-orphan")
-
 class CartItem(Base):
-    __tablename__ = "cart_items"
+    __tablename__ = "cart" # Renaming the table to 'cart' as per requirements
 
     id = Column(Integer, primary_key=True, index=True)
-    cart_id = Column(Integer, ForeignKey("carts.id"), nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     product_id = Column(Integer, ForeignKey("products.id"), nullable=False)
     quantity = Column(Integer, nullable=False)
 
-    # An item belongs to one cart
-    cart = relationship("Cart", back_populates="items")
-    # An item refers to one product
+    # Relationship back to the user
+    owner = relationship("User", back_populates="cart_items")
+    # Relationship to the product
     product = relationship("Product")

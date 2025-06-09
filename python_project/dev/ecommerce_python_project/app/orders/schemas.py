@@ -1,27 +1,25 @@
 # app/orders/schemas.py
-
 from pydantic import BaseModel, ConfigDict
 from typing import List
 from datetime import datetime
-from ..products.schemas import Product # Import product schema for nesting
+from ..products.schemas import Product
+from ..enums import OrderStatus # Import the enum
 
-# Schema for an individual item within an order
+# This schema is now for responses only
 class OrderItem(BaseModel):
     id: int
     product_id: int
     quantity: int
-    product: Product  # Nest the full product details
+    price_at_purchase: float # Use the stored price
+    product: Product
 
     model_config = ConfigDict(from_attributes=True)
 
-# Schema for a full order, used for display
+# This schema is for responses only
 class Order(BaseModel):
     id: int
-    user_id: int
-    order_date: datetime
-    items: List[OrderItem] = [] # A list of OrderItem schemas
-    
-    # We can add a calculated property for the total price
-    total_price: float
+    created_at: datetime
+    status: OrderStatus
+    items: List[OrderItem] = []
 
     model_config = ConfigDict(from_attributes=True)
