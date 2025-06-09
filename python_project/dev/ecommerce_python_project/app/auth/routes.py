@@ -16,31 +16,28 @@ router = APIRouter(
     tags=["Authentication"]
 )
 
-@router.post("/register", response_model=schemas.User)
-def register_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
+@router.post("/signup", response_model=schemas.User, status_code=status.HTTP_201_CREATED)
+def signup_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     db_user = crud.get_user_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(status_code=400, detail="Email already registered")
     
     return crud.create_user(db=db, user=user)
 
-@router.post("/login", response_model=schemas.Token)
-def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+@router.post("/signin", response_model=schemas.Token)
+def signin_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+    # ... the logic inside this function remains exactly the same ...
     user = crud.get_user_by_email(db, email=form_data.username)
-    
-    # Note: form_data.username is used for the email field
     if not user or not utils.verify_password(form_data.password, user.hashed_password): # type: ignore
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect email or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
-        
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = utils.create_access_token(
         data={"sub": user.email}, expires_delta=access_token_expires
     )
-    
     return {"access_token": access_token, "token_type": "bearer"}
 
 # app/auth/routes.py

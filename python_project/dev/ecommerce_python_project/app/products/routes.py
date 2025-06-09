@@ -8,6 +8,7 @@ from ..core.database import get_db
 from ..auth import utils as auth_utils
 from ..auth import models as auth_models
 from . import crud, schemas
+from ..enums import UserRole
 
 router = APIRouter(
     prefix="/products",
@@ -33,9 +34,10 @@ def read_product(product_id: int, db: Session = Depends(get_db)):
 def create_new_product(
     product: schemas.ProductCreate, 
     db: Session = Depends(get_db), 
-    current_user: auth_models.User = Depends(auth_utils.get_current_user)
+    # OLD: current_user: auth_models.User = Depends(auth_utils.get_current_user)
+    # NEW:
+    current_admin: auth_models.User = Depends(auth_utils.role_required(UserRole.ADMIN))
 ):
-    # In a real app, you might add a check here to see if current_user is an admin
     return crud.create_product(db=db, product=product)
 
 # PROTECTED ROUTE: Update a product

@@ -1,5 +1,5 @@
 # app/auth/utils.py
-
+from functools import wraps
 from passlib.context import CryptContext
 from jose import JWTError, jwt
 
@@ -9,13 +9,15 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from sqlalchemy.orm import Session
 
+from app.enums import UserRole
+
 from ..core.config import settings
 from ..core.database import get_db
 from . import crud, models, schemas
 
 # This tells FastAPI where to look for the token.
 # The tokenUrl is the path to our login endpoint.
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/signin")
 
 # We are telling passlib to use bcrypt as the default hashing algorithm.
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -63,3 +65,16 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
         raise credentials_exception
     
     return user
+
+def role_required(required_role: UserRole):
+    """
+    A decorator-like dependency to check for a specific user role.
+    """
+    def role_checker(current_user: models.User = Depends(get_current_user)):
+        if current_user.role != required_role: # type: ignore
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"Operation not permitted. Requires {required_role.value} role."
+            )
+        return current_user
+    return role_checker

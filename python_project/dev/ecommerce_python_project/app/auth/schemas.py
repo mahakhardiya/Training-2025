@@ -1,27 +1,32 @@
 # app/auth/schemas.py
 
 from pydantic import BaseModel, EmailStr, ConfigDict
+from ..enums import UserRole # <-- IMPORT ENUM
 
 # Schema for receiving user creation data from a request
+# NOTE: The endpoint name is changing from /register to /signup
 class UserCreate(BaseModel):
-    email: EmailStr  # Pydantic validates this is a valid email format
+    name: str # <-- ADD NAME
+    email: EmailStr
     password: str
+    role: UserRole = UserRole.USER # <-- ADD ROLE, with a default
 
 # Schema for returning user information in a response
 class User(BaseModel):
     id: int
+    name: str # <-- ADD NAME
     email: EmailStr
     is_active: bool
+    role: UserRole # <-- ADD ROLE
 
-    # Pydantic V2 config to allow creating the schema from an ORM model
     model_config = ConfigDict(from_attributes=True)
 
-# app/auth/schemas.py
-# ... (keep existing User and UserCreate schemas)
-
+# Token schemas remain the same
 class Token(BaseModel):
     access_token: str
     token_type: str
+    # We will add refresh_token here later as requested
 
 class TokenData(BaseModel):
     email: str | None = None
+    # We will add more fields here later

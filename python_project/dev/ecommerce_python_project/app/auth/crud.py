@@ -9,12 +9,16 @@ def get_user_by_email(db: Session, email: str):
     return db.query(models.User).filter(models.User.email == email).first()
 
 def create_user(db: Session, user: schemas.UserCreate):
-    """Creates a new user in the database."""
     hashed_password = get_password_hash(user.password)
-    db_user = models.User(email=user.email, hashed_password=hashed_password)
+    # Add the new fields when creating the User model instance
+    db_user = models.User(
+        name=user.name, 
+        email=user.email, 
+        hashed_password=hashed_password, 
+        role=user.role
+    )
     
-    db.add(db_user)  # Add the new user object to the session
-    db.commit()      # Commit the changes to the database
-    db.refresh(db_user) # Refresh the object to get the new ID from the DB
-    
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
     return db_user
