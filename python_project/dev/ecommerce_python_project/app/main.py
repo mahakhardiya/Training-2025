@@ -22,8 +22,13 @@ from .auth.routes import router as auth_router
 from .products.routes import router as product_router
 from .orders.routes import router as order_router
 from .cart.routes import router as cart_router
+from .core.exceptions import generic_exception_handler
+from .core.logging_config import setup_logging
+
+setup_logging()
 
 app = FastAPI(title="E-commerce API")
+app.add_exception_handler(Exception, generic_exception_handler)
 
 # Include routers
 app.include_router(auth_router)
