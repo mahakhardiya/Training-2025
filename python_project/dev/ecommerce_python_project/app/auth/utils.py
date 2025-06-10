@@ -83,3 +83,35 @@ def role_required(required_role: UserRole):
             )
         return current_user
     return role_checker
+
+def create_password_reset_token(email: str) -> str:
+    """
+    Generates a secure, short-lived token for password reset.
+    """
+    # Token is valid for 15 minutes
+    expire = datetime.now(timezone.utc) + timedelta(minutes=15)
+    to_encode = {
+        "exp": expire, 
+        "sub": email,
+        "scope": "password_reset" # Crucial: scope limits token's purpose
+    }
+    encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
+    return encoded_jwt
+
+def verify_password_reset_token(token: str) -> str | None:
+    """
+    Verifies the password reset token.
+    Returns the email if the token is valid and correctly scoped, otherwise None.
+    """
+    try:
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+        
+        # Security Check: Ensure this token is ONLY for password resets
+        if payload.get("scope") != "password_reset":
+            return None
+        
+        email: str = payload.get("sub") # type: ignore
+        return email
+    except JWTError:
+        # Token is invalid, expired, or has a bad signature
+        return None

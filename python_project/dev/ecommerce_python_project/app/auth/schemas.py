@@ -29,4 +29,10 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     email: str | None = None
-    # We will add more fields here later
+    
+class ForgotPasswordSchema(BaseModel):
+    email: EmailStr
+
+class ResetPasswordSchema(BaseModel):
+    token: str
+    new_password: str

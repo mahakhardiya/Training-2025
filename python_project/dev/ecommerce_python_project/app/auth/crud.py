@@ -24,3 +24,12 @@ def create_user(db: Session, user: schemas.UserCreate):
     db.commit()
     db.refresh(db_user)
     return db_user
+
+def update_password(db: Session, user: models.User, new_password: str):
+    """Updates a user's password."""
+    hashed_password = get_password_hash(new_password)
+    user.hashed_password = hashed_password # type: ignore
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+    return user

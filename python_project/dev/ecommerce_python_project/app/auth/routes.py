@@ -1,11 +1,12 @@
 # app/auth/routes.py
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks 
 from fastapi.security import OAuth2PasswordRequestForm
 from jose import jwt, JWTError
 from ..core.config import settings
 from sqlalchemy.orm import Session
 from datetime import timedelta
+from ..utils import email as email_utils 
 
 from .hashing import verify_password
 
@@ -97,3 +98,60 @@ def refresh_access_token(
         "token_type": "bearer",
         "refresh_token": new_refresh_token
     }
+
+@router.post("/forgot-password", status_code=status.HTTP_200_OK)
+async def request_password_reset(
+    request_data: schemas.ForgotPasswordSchema,
+    background_tasks: BackgroundTasks,
+    db: Session = Depends(get_db)
+):
+    """
+    Initiates a password reset request.
+    Sends an email with a reset token if the user exists.
+    """
+    user = crud.get_user_by_email(db, email=request_data.email)
+    
+    # To prevent email enumeration attacks, we always return a success message.
+    # The email is only sent if the user actually exists.
+    if user:
+        token = utils.create_password_reset_token(email=user.email) # type: ignore
+        reset_link = f"http://your-frontend-domain.com/reset-password?token={token}"
+        
+        message_body = f"""
+        <p>Hello {user.name},</p>
+        <p>You requested a password reset for your account.</p>
+        <p>Please click the link below to set a new password:</p>
+        <p><a href="{reset_link}">{reset_link}</a></p>
+        <p>This link is valid for 15 minutes.</p>
+        <p>If you did not request this, please ignore this email.</p>
+        """
+        
+        # Use background tasks to send the email without blocking the response
+        background_tasks.add_task(
+            email_utils.send_email,
+            email=[user.email], # type: ignore
+            subject="Your Password Reset Request",
+            message_body=message_body
+        )
+        
+    return {"message": "If an account with this email exists, a password reset link has been sent."}
+
+@router.post("/reset-password", status_code=status.HTTP_200_OK)
+def perform_password_reset(
+    request_data: schemas.ResetPasswordSchema, 
+    db: Session = Depends(get_db)
+):
+    """
+    Resets the user's password using a valid token.
+    """
+    email = utils.verify_password_reset_token(token=request_data.token)
+    if not email:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid or expired token.")
+        
+    user = crud.get_user_by_email(db, email=email)
+    if not user:
+        # This should be virtually impossible if the token is valid, but it's a good safeguard.
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid token.")
+
+    crud.update_password(db, user=user, new_password=request_data.new_password)
+    return {"message": "Your password has been successfully reset."}
