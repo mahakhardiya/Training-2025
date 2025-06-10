@@ -5,11 +5,13 @@
 # --- ADD THIS BLOCK ---
 import os
 import sys
+
 # Add the project root directory to the Python path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 # ---------------------
 
 from sqlalchemy import engine_from_config
+
 # ... (the rest of the file)
 
 from logging.config import fileConfig
@@ -35,7 +37,7 @@ from app.core.config import settings
 # Import all the models, so that Base has them registered
 from app.auth.models import User
 from app.products.models import Product
-from app.orders.models import Order, OrderItem # type: ignore
+from app.orders.models import Order, OrderItem  # type: ignore
 
 # add your model's MetaData object here
 # for 'autogenerate' support
@@ -71,21 +73,19 @@ def run_migrations_online() -> None:
     """Run migrations in 'online' mode."""
     # This is the section we care about.
     # It creates a connection to the real database.
-    
+
     # Create a dictionary with our database URL for Alembic
     configuration = config.get_section(config.config_ini_section)
-    configuration["sqlalchemy.url"] = settings.DATABASE_URL # type: ignore # Use our settings
-    
+    configuration["sqlalchemy.url"] = settings.DATABASE_URL  # type: ignore # Use our settings
+
     connectable = engine_from_config(
-        configuration, # type: ignore
+        configuration,  # type: ignore
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()

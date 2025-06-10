@@ -11,7 +11,7 @@ LOGGING_CONFIG = {
             "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         },
         "uvicorn_access": {
-            "format": "%(asctime)s - %(levelname)s - %(client_addr)s - \"%(request_line)s\" %(status_code)s",
+            "format": '%(asctime)s - %(levelname)s - %(client_addr)s - "%(request_line)s" %(status_code)s',
         },
     },
     "handlers": {
@@ -45,8 +45,9 @@ LOGGING_CONFIG = {
     },
 }
 
+
 def setup_logging():
     """
     Applies the logging configuration.
     """
-    logging.config.dictConfig(LOGGING_CONFIG) # type: ignore
+    logging.config.dictConfig(LOGGING_CONFIG)  # type: ignore

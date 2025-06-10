@@ -16,10 +16,11 @@ router = APIRouter(
     prefix="/admin",
     tags=["Admin"],
     # This dependency applies to ALL routes in this router
-    dependencies=[Depends(auth_utils.role_required(UserRole.ADMIN))]
+    dependencies=[Depends(auth_utils.role_required(UserRole.ADMIN))],
 )
 
 # --- User Management ---
+
 
 @router.get("/users", response_model=List[auth_schemas.User])
 def get_all_users(db: Session = Depends(get_db)):
@@ -29,7 +30,9 @@ def get_all_users(db: Session = Depends(get_db)):
     users = db.query(auth_models.User).all()
     return users
 
+
 # --- Order Management ---
+
 
 @router.get("/orders", response_model=List[order_schemas.Order])
 def get_all_orders(db: Session = Depends(get_db)):
@@ -39,20 +42,23 @@ def get_all_orders(db: Session = Depends(get_db)):
     orders = db.query(order_models.Order).all()
     return orders
 
+
 @router.put("/orders/{order_id}/status", response_model=order_schemas.Order)
 def update_order_status(
     order_id: int,
-    new_status: OrderStatus, # FastAPI will validate this against the enum
-    db: Session = Depends(get_db)
+    new_status: OrderStatus,  # FastAPI will validate this against the enum
+    db: Session = Depends(get_db),
 ):
     """
     [Admin Only] Update the status of an order.
     """
-    order = db.query(order_models.Order).filter(order_models.Order.id == order_id).first()
+    order = (
+        db.query(order_models.Order).filter(order_models.Order.id == order_id).first()
+    )
     if not order:
         raise HTTPException(status_code=404, detail="Order not found")
-    
-    order.status = new_status # type: ignore
+
+    order.status = new_status  # type: ignore
     db.commit()
     db.refresh(order)
     return order

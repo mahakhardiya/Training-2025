@@ -24,10 +24,12 @@ for i, path_item in enumerate(sys.path):
 #    The first item (sys.path[0]) should be the CWD.
 #    In some cases it can be an empty string '' which also means the CWD.
 is_cwd_in_path = False
-if sys.path and (sys.path[0] == cwd or sys.path[0] == ''):
+if sys.path and (sys.path[0] == cwd or sys.path[0] == ""):
     is_cwd_in_path = True
 
-print(f"\n[4] Is CWD in sys.path? {'YES' if is_cwd_in_path else 'NO <--- THIS IS THE PROBLEM'}")
+print(
+    f"\n[4] Is CWD in sys.path? {'YES' if is_cwd_in_path else 'NO <--- THIS IS THE PROBLEM'}"
+)
 
 # 5. From Python's perspective, what files/folders are in the CWD?
 print("\n[5] Directory listing of CWD from within Python:")
@@ -39,10 +41,12 @@ if cwd:
         else:
             for item in dir_contents:
                 print(f"    - {item}")
-        
+
         # 6. CRITICAL TEST: Can Python see the 'app' folder?
-        is_app_folder_visible = 'app' in dir_contents
-        print(f"\n[6] Can Python see the 'app' folder here? {'YES' if is_app_folder_visible else 'NO <--- THIS IS ALSO THE PROBLEM'}")
+        is_app_folder_visible = "app" in dir_contents
+        print(
+            f"\n[6] Can Python see the 'app' folder here? {'YES' if is_app_folder_visible else 'NO <--- THIS IS ALSO THE PROBLEM'}"
+        )
 
     except Exception as e:
         print(f"    FAILED to list directory contents: {e}")

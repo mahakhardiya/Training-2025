@@ -7,6 +7,7 @@ from sqlalchemy.orm import relationship
 from ..core.database import Base
 from ..enums import OrderStatus
 
+
 class Order(Base):  # <-- Must be 'Order' (Capital O)
     __tablename__ = "orders"
 
@@ -19,11 +20,14 @@ class Order(Base):  # <-- Must be 'Order' (Capital O)
     total_amount = Column(Float, nullable=False)
     status = Column(Enum(OrderStatus), nullable=False, default=OrderStatus.PENDING)
     # --------------------------
-    
-    owner = relationship("app.auth.models.User", back_populates="orders")
-    items = relationship("OrderItem", back_populates="order", cascade="all, delete-orphan")
 
-class OrderItem(Base): # <-- Must be 'OrderItem' (Capital O and I)
+    owner = relationship("app.auth.models.User", back_populates="orders")
+    items = relationship(
+        "OrderItem", back_populates="order", cascade="all, delete-orphan"
+    )
+
+
+class OrderItem(Base):  # <-- Must be 'OrderItem' (Capital O and I)
     __tablename__ = "order_items"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -34,6 +38,6 @@ class OrderItem(Base): # <-- Must be 'OrderItem' (Capital O and I)
     # --- NEW COLUMN ---
     price_at_purchase = Column(Float, nullable=False)
     # ------------------
-    
+
     order = relationship("Order", back_populates="items")
     product = relationship("Product")

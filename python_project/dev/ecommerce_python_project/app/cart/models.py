@@ -5,8 +5,9 @@ from sqlalchemy.orm import relationship
 
 from ..core.database import Base
 
+
 class CartItem(Base):
-    __tablename__ = "cart" # Renaming the table to 'cart' as per requirements
+    __tablename__ = "cart"  # Renaming the table to 'cart' as per requirements
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)

@@ -7,5 +7,5 @@ from .core.database import Base
 from .auth.models import User
 from .products.models import Product
 from .orders.models import Order, OrderItem
-from .cart.models import CartItem # <-- Corrected line
+from .cart.models import CartItem  # <-- Corrected line
 from .auth.password_reset_models import PasswordResetToken

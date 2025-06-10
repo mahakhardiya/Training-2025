@@ -3,6 +3,7 @@
 # The sys.path fix can be removed now if you like, but leaving it doesn't hurt.
 import sys
 import os
+
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(current_dir)
 if project_root not in sys.path:
@@ -14,6 +15,7 @@ if project_root not in sys.path:
 # This ensures all SQLAlchemy models are loaded and registered before any routes
 # that might depend on them are imported.
 from . import models
+
 # --- END OF THE FIX ---
 
 from .admin.routes import router as admin_router
@@ -24,10 +26,14 @@ from .orders.routes import router as order_router
 from .cart.routes import router as cart_router
 from .core.exceptions import generic_exception_handler
 from .core.logging_config import setup_logging
+from fastapi import FastAPI, HTTPException 
+from .core.exceptions import generic_exception_handler, http_exception_handler
 
 setup_logging()
 
 app = FastAPI(title="E-commerce API")
+app.add_exception_handler(Exception, generic_exception_handler)
+app.add_exception_handler(HTTPException, http_exception_handler) # type: ignore
 app.add_exception_handler(Exception, generic_exception_handler)
 
 # Include routers
@@ -36,6 +42,7 @@ app.include_router(product_router)
 app.include_router(order_router)
 app.include_router(cart_router)
 app.include_router(admin_router)
+
 
 @app.get("/")
 def read_root():

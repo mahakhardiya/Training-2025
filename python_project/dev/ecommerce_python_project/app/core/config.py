@@ -2,7 +2,8 @@
 
 from pydantic_settings import BaseSettings  # ✅ new
 
-class Settings(BaseSettings): # type: ignore
+
+class Settings(BaseSettings):  # type: ignore
     DATABASE_URL: str
     SECRET_KEY: str
     ALGORITHM: str
@@ -20,4 +21,5 @@ class Settings(BaseSettings): # type: ignore
     class Config:
         env_file = ".env"
 
-settings = Settings() # type: ignore
+
+settings = Settings()  # type: ignore

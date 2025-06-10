@@ -5,19 +5,21 @@ from sqlalchemy import or_
 from typing import Optional
 from . import models, schemas
 
+
 def get_product(db: Session, product_id: int):
     """Fetches a single product by its ID."""
     # Using joinedload can be more efficient if you often access related models
     return db.query(models.Product).filter(models.Product.id == product_id).first()
 
+
 def get_filtered_products(
-    db: Session, 
-    skip: int = 0, 
+    db: Session,
+    skip: int = 0,
     limit: int = 20,
     category: Optional[str] = None,
     min_price: Optional[float] = None,
     max_price: Optional[float] = None,
-    sort_by: Optional[str] = None
+    sort_by: Optional[str] = None,
 ):
     """
     Fetches products with filtering, sorting, and pagination.
@@ -49,12 +51,16 @@ def search_products(db: Session, keyword: str):
     Searches for products by keyword in name and description.
     """
     search_term = f"%{keyword}%"
-    products = db.query(models.Product).filter(
-        or_(
-            models.Product.name.ilike(search_term),
-            models.Product.description.ilike(search_term)
+    products = (
+        db.query(models.Product)
+        .filter(
+            or_(
+                models.Product.name.ilike(search_term),
+                models.Product.description.ilike(search_term),
+            )
         )
-    ).all()
+        .all()
+    )
     return products
 
 # --- Create, Update, Delete functions remain unchanged ---
@@ -66,12 +72,13 @@ def create_product(db: Session, product: schemas.ProductCreate):
         price=product.price,
         stock=product.stock,
         category=product.category,
-        image_url=product.image_url
+        image_url=product.image_url,
     )
     db.add(db_product)
     db.commit()
     db.refresh(db_product)
     return db_product
+
 
 def update_product(db: Session, product_id: int, product_update: schemas.ProductUpdate):
     db_product = get_product(db, product_id)
@@ -84,6 +91,7 @@ def update_product(db: Session, product_id: int, product_update: schemas.Product
     db.commit()
     db.refresh(db_product)
     return db_product
+
 
 def delete_product(db: Session, product_id: int):
     db_product = get_product(db, product_id)

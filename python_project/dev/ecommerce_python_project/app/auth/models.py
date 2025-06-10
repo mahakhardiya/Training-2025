@@ -6,6 +6,7 @@ from sqlalchemy.orm import relationship
 from ..core.database import Base
 from ..enums import UserRole
 
+
 class User(Base):
     __tablename__ = "users"
 
@@ -18,5 +19,7 @@ class User(Base):
 
     # Relationships
     orders = relationship("app.orders.models.Order", back_populates="owner")
-    cart_items = relationship("CartItem", back_populates="owner", cascade="all, delete-orphan")
+    cart_items = relationship(
+        "CartItem", back_populates="owner", cascade="all, delete-orphan"
+    )
     # No relationship to password reset tokens is needed here.
