@@ -1,6 +1,6 @@
 # app/core/config.py
 
-from pydantic_settings import BaseSettings  # ✅ new
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):  # type: ignore
