@@ -33,8 +33,6 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     )
     return encoded_jwt
 
-
-# --- NEW FUNCTION ---
 def create_refresh_token(data: dict, expires_delta: timedelta | None = None):
     to_encode = data.copy()
     if expires_delta:
@@ -45,7 +43,7 @@ def create_refresh_token(data: dict, expires_delta: timedelta | None = None):
             days=settings.REFRESH_TOKEN_EXPIRE_DAYS
         )
 
-    to_encode.update({"exp": expire, "scope": "refresh_token"})  # <-- ADD SCOPE
+    to_encode.update({"exp": expire, "scope": "refresh_token"}) 
     # Use the REFRESH_SECRET_KEY for signing
     encoded_jwt = jwt.encode(
         to_encode, settings.REFRESH_SECRET_KEY, algorithm=settings.ALGORITHM
