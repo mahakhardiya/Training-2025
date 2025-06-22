@@ -21,7 +21,6 @@ router = APIRouter(
 
 # --- User Management ---
 
-
 @router.get("/users", response_model=List[auth_schemas.User])
 def get_all_users(db: Session = Depends(get_db)):
     """
@@ -32,7 +31,6 @@ def get_all_users(db: Session = Depends(get_db)):
 
 
 # --- Order Management ---
-
 
 @router.get("/orders", response_model=List[order_schemas.Order])
 def get_all_orders(db: Session = Depends(get_db)):
