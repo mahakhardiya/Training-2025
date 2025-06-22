@@ -1,6 +1,4 @@
-// src/InputField.js
-
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function InputField() {
   // 1. Initialize state for the input text.

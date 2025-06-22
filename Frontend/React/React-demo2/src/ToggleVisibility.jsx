@@ -1,6 +1,4 @@
-// src/ToggleVisibility.js
-
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function ToggleVisibility() {
   // 1. Initialize state for visibility.
@@ -18,7 +16,7 @@ function ToggleVisibility() {
       <div className="button-group">
         <button onClick={handleToggle}>
           {/* Change button text based on the state */}
-          {isVisible ? 'Hide Paragraph' : 'Show Paragraph'}
+          {isVisible ? 'Hide Paragraph' : 'Show Paragraph'} 
         </button>
       </div>
 
