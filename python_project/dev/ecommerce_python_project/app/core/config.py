@@ -2,7 +2,6 @@
 
 from pydantic_settings import BaseSettings # type: ignore
 
-
 class Settings(BaseSettings):  # type: ignore
     DATABASE_URL: str
     SECRET_KEY: str
