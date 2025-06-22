@@ -1,5 +1,4 @@
 # app/core/exceptions.py
-
 import logging
 from fastapi import Request, status  # type: ignore
 from fastapi.responses import JSONResponse # type: ignore

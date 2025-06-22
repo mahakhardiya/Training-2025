@@ -1,6 +1,5 @@
 # app/main.py
 
-# The sys.path fix can be removed now if you like, but leaving it doesn't hurt.
 import sys
 import os
 

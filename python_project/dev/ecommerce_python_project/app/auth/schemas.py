@@ -5,7 +5,6 @@ from ..enums import UserRole
 
 
 # Schema for receiving user creation data from a request
-# NOTE: The endpoint name is changing from /register to /signup
 class UserCreate(BaseModel):
     name: str  
     email: EmailStr
@@ -16,10 +15,10 @@ class UserCreate(BaseModel):
 # Schema for returning user information in a response
 class User(BaseModel):
     id: int
-    name: str  # <-- ADD NAME
+    name: str 
     email: EmailStr
     is_active: bool
-    role: UserRole  # <-- ADD ROLE
+    role: UserRole 
 
     model_config = ConfigDict(from_attributes=True)
 

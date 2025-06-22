@@ -1,5 +1,4 @@
 # app/orders/models.py
-
 import datetime
 from sqlalchemy import Column, Integer, ForeignKey, DateTime, Float, Enum
 from sqlalchemy.orm import relationship
