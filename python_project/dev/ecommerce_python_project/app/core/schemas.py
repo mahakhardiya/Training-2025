@@ -1,5 +1,4 @@
 # app/core/schemas.py
-
 from pydantic import BaseModel # type: ignore
 
 class ErrorResponse(BaseModel):
