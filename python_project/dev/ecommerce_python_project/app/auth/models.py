@@ -1,5 +1,4 @@
 # app/auth/models.py
-
 from sqlalchemy import Boolean, Column, Integer, String, Enum # type: ignore
 from sqlalchemy.orm import relationship # type: ignore
 
