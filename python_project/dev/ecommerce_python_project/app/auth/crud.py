@@ -3,8 +3,6 @@
 from sqlalchemy.orm import Session # type: ignore
 from . import models, schemas
 
-# from .utils import get_password_hash
-
 from .hashing import get_password_hash
 
 
