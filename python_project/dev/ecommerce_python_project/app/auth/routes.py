@@ -63,7 +63,7 @@ def signin_for_access_token(
     return {
         "access_token": access_token,
         "token_type": "bearer",
-        "refresh_token": refresh_token,  # <-- RETURN REFRESH TOKEN
+        "refresh_token": refresh_token,  
     }
 
 
