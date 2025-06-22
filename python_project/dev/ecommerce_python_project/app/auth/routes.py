@@ -1,10 +1,10 @@
 # app/auth/routes.py
 import logging
-from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks
-from fastapi.security import OAuth2PasswordRequestForm
-from jose import jwt, JWTError
+from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks # type: ignore
+from fastapi.security import OAuth2PasswordRequestForm # type: ignore
+from jose import jwt, JWTError  # type: ignore
 from ..core.config import settings
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session # type: ignore
 from datetime import timedelta
 from ..utils import email as email_utils
 

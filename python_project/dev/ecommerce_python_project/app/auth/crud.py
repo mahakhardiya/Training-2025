@@ -1,6 +1,6 @@
 # app/auth/crud.py
 
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session # type: ignore
 from . import models, schemas
 
 # from .utils import get_password_hash

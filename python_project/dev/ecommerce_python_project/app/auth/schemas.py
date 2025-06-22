@@ -1,16 +1,16 @@
 # app/auth/schemas.py
 
-from pydantic import BaseModel, EmailStr, ConfigDict
-from ..enums import UserRole  # <-- IMPORT ENUM
+from pydantic import BaseModel, EmailStr, ConfigDict # type: ignore
+from ..enums import UserRole  
 
 
 # Schema for receiving user creation data from a request
 # NOTE: The endpoint name is changing from /register to /signup
 class UserCreate(BaseModel):
-    name: str  # <-- ADD NAME
+    name: str  
     email: EmailStr
     password: str
-    role: UserRole = UserRole.USER  # <-- ADD ROLE, with a default
+    role: UserRole = UserRole.USER  
 
 
 # Schema for returning user information in a response

@@ -1,10 +1,10 @@
 # app/core/exceptions.py
 
 import logging
-from fastapi import Request, status # <-- Add status
-from fastapi.responses import JSONResponse
-from .schemas import ErrorResponse # <-- Import our new schema
-from fastapi import HTTPException
+from fastapi import Request, status  # type: ignore
+from fastapi.responses import JSONResponse # type: ignore
+from .schemas import ErrorResponse 
+from fastapi import HTTPException # type: ignore
 
 logger = logging.getLogger(__name__)
 

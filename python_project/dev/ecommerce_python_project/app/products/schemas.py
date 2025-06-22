@@ -1,6 +1,6 @@
 # app/products/schemas.py
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field # type: ignore
 
 
 class ProductBase(BaseModel):

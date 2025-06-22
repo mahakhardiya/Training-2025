@@ -1,8 +1,8 @@
 # app/admin/routes.py
 
 from typing import List
-from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy.orm import Session
+from fastapi import APIRouter, Depends, HTTPException # type: ignore
+from sqlalchemy.orm import Session # type: ignore
 
 from ..core.database import get_db
 from ..auth import utils as auth_utils

@@ -1,0 +1,17 @@
+/* src/UserDetails.css */
+.user-details {
+  margin-top: 20px;
+  text-align: left;
+  width: 100%;
+}
+
+.user-details p {
+  margin: 8px 0;
+  color: #555;
+  font-size: 0.95em;
+  word-wrap: break-word; /* Prevents long emails from overflowing */
+}
+
+.user-details p strong {
+  color: #111;
+}

@@ -1,7 +1,7 @@
 # app/auth/models.py
 
-from sqlalchemy import Boolean, Column, Integer, String, Enum
-from sqlalchemy.orm import relationship
+from sqlalchemy import Boolean, Column, Integer, String, Enum # type: ignore
+from sqlalchemy.orm import relationship # type: ignore
 
 from ..core.database import Base
 from ..enums import UserRole

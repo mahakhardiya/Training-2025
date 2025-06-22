@@ -1,0 +1,19 @@
+/* src/UserCard.css */
+
+.user-card {
+  background-color: white;
+  border-radius: 15px; /* Matches the rounded corners in your image */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  width: 350px; /* Adjusted width to better fit the content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #eee;
+}
+
+.user-name {
+  margin: 0 0 20px 0; /* Add some space below the name */
+  font-size: 1.5em;
+  color: #333;
+}
