@@ -1,0 +1,12 @@
+.container { max-width: 900px; margin: 2rem auto; padding: 1rem; font-family: sans-serif; }
+.content-wrapper { display: flex; gap: 2rem; }
+.list-pane { flex: 1; }
+.detail-pane { flex: 2; border-left: 1px solid #eee; padding-left: 2rem; }
+.post-list { list-style: none; padding: 0; }
+.post-list li button {
+  background: none; border: none; font-size: 1.1rem; text-align: left;
+  padding: 0.5rem 0; cursor: pointer; color: #0070f3;
+}
+.post-list li button:hover { text-decoration: underline; }
+.post-detail h2 { margin-top: 0; }
+.post-detail-placeholder { color: #666; font-style: italic; }
